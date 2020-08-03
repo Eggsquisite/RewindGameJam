@@ -6,17 +6,14 @@ public class Player : MonoBehaviour
 {
     const float GRAVITY = -1f;
 
-    [SerializeField] float moveSpeed = 10.0f;
-    [SerializeField] float jumpForce = 400.0f;
+    [SerializeField] private LayerMask platformLayerMask;
+    [SerializeField] float moveSpeed = 40.0f;
+    [SerializeField] float jumpForce = 15.0f;
 
     private Rigidbody2D rb;
     private Collider2D feet;
-    private Vector2 movement;
-    private bool m_Grounded;        // Whether or not the player is grounded
-    private bool onGround = false;
     public RewindManager rm;
-    
-    
+    private Vector3 movement;
 
     // Start is called before the first frame update
     void Start()
@@ -29,9 +26,15 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        CheckGrounded();
+        //Move();
+        if (IsGrounded() && Input.GetKeyDown(KeyCode.Space))
+            Jump();
+    }
+
+    
+    private void FixedUpdate()
+    {
         Move();
-        Jump();
         RewindTime();
     }
 
@@ -43,36 +46,59 @@ public class Player : MonoBehaviour
             
         }
     }
+    
 
 
-    private void CheckGrounded()
+    private bool IsGrounded()
     {
+        /*
         if (feet.IsTouchingLayers(LayerMask.GetMask("Ground")) && !onGround)
         {
             Debug.Log("grounded");
-            onGround = true;
+            return true;
         }
         else if (!feet.IsTouchingLayers(LayerMask.GetMask("Ground")) && onGround)
         {
             Debug.Log("ungrounded");
-            onGround = false;
+            return false;
         }
+
+        return false;
+        */
+
+        float extraHeightText = .1f;
+        RaycastHit2D raycastHit = Physics2D.Raycast(feet.bounds.center, Vector2.down, feet.bounds.extents.y + extraHeightText, platformLayerMask);
+        Color rayColor;
+
+        if (raycastHit.collider != null)
+        {
+            rayColor = Color.green;
+        }
+        else {
+            rayColor = Color.red;
+        }
+        Debug.DrawRay(feet.bounds.center, Vector2.down * (feet.bounds.extents.y + extraHeightText), rayColor);
+        Debug.Log(raycastHit.collider);
+        return raycastHit.collider != null;
     }
 
     private void Move()
     {
-        Vector3 movement = new Vector3(Input.GetAxis("Horizontal") * moveSpeed, rb.velocity.y);
+        if (Input.GetAxis("Horizontal") == 0) {
+            movement = new Vector3(0f, rb.velocity.y);
+        }
+        else { 
+            movement = new Vector3(Input.GetAxis("Horizontal") * moveSpeed, rb.velocity.y);
+        } 
+
         rb.velocity = movement;
     }
 
 
     private void Jump()
     {
-        if (Input.GetButtonDown("Jump") && onGround)
-        {
-            onGround = false;
-            rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
-        }
+        rb.velocity = new Vector2(rb.velocity.x, 0f);
+        rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
     }
 
 }
