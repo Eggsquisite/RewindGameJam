@@ -10,7 +10,7 @@ public class CamMovement : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        transform.Translate(Vector3.left * Time.deltaTime * scrollSpeed);
+        transform.Translate(Vector3.right * Time.deltaTime * scrollSpeed);
     }
 
     void Rewind() {

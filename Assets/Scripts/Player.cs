@@ -13,14 +13,17 @@ public class Player : MonoBehaviour
     private Collider2D feet;
     private Vector2 movement;
     private bool m_Grounded;        // Whether or not the player is grounded
-
     private bool onGround = false;
+    public RewindManager rm;
+    
+    
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         feet = GetComponent<Collider2D>();
+        
     }
 
     // Update is called once per frame
@@ -29,6 +32,16 @@ public class Player : MonoBehaviour
         CheckGrounded();
         Move();
         Jump();
+        RewindTime();
+    }
+
+    public void RewindTime() {
+        if (Input.GetMouseButtonDown(1)) {
+            
+        }
+        else if (Input.GetMouseButtonUp(1)) {
+            
+        }
     }
 
 
