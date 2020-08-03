@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CamMovement : MonoBehaviour
 {
+    // This can be used to scroll the map as well
     [SerializeField] float scrollSpeed = 2.0f;
 
     // Update is called once per frame
