@@ -7,11 +7,12 @@ public class Player : MonoBehaviour
     const float GRAVITY = -1f;
 
     [SerializeField] float moveSpeed = 10.0f;
-    [SerializeField] float jumpVelocity = 100.0f;
+    [SerializeField] float jumpForce = 400.0f;
 
     private Rigidbody2D rb;
     private Collider2D feet;
     private Vector2 movement;
+    private bool m_Grounded;        // Whether or not the player is grounded
 
     private bool onGround = false;
 
@@ -26,13 +27,8 @@ public class Player : MonoBehaviour
     private void Update()
     {
         CheckGrounded();
-        MoveInput();
+        Move();
         Jump();
-    }
-
-    void FixedUpdate()
-    {
-       MoveCharacter(movement);
     }
 
 
@@ -50,23 +46,19 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void MoveInput()
+    private void Move()
     {
-        movement = new Vector2(Input.GetAxis("Horizontal"), Mathf.Clamp(rb.velocity.y, -1, 0));
+        Vector3 movement = new Vector3(Input.GetAxis("Horizontal") * moveSpeed, rb.velocity.y);
+        rb.velocity = movement;
     }
 
-    private void MoveCharacter(Vector2 direction)
-    {
-        rb.MovePosition((Vector2)transform.position + (direction * moveSpeed * Time.deltaTime));
-        //rb.velocity = Vector2.right * moveSpeed * Time.deltaTime;
-    }
 
     private void Jump()
     {
         if (Input.GetButtonDown("Jump") && onGround)
         {
-            Debug.Log("jumping");
-            rb.velocity = Vector2.up * jumpVelocity;
+            onGround = false;
+            rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
         }
     }
 
