@@ -1,10 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class RewindManager : MonoBehaviour
-{
+public class RewindManager : MonoBehaviour {
     // Start is called before the first frame update
+
+    public static bool isRewinding = false;
     
     List<GameObject> rewindableObjects = new List<GameObject>();
     void Start() {
@@ -15,12 +15,7 @@ public class RewindManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    void RewindTime() {
+    void Update() {
         
     }
 }

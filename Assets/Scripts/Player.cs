@@ -24,26 +24,28 @@ public class Player : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void Update()
-    {
+    private void Update() {
         //Move();
         if (IsGrounded() && Input.GetKeyDown(KeyCode.Space))
             Jump();
-    }
-
-    
-    private void FixedUpdate()
-    {
-        Move();
         RewindTime();
     }
 
+    
+    private void FixedUpdate() {
+        Move();
+    }
+
     public void RewindTime() {
-        if (Input.GetMouseButtonDown(1)) {
+        if (Input.GetKeyDown(KeyCode.LeftShift)) {
             
+            //rm.RewindTime();
+            RewindManager.isRewinding = true;
+            Debug.Log("REWINDING TRUE");
         }
-        else if (Input.GetMouseButtonUp(1)) {
-            
+        else if (Input.GetKeyUp(KeyCode.LeftShift)) {
+            RewindManager.isRewinding = false;
+            Debug.Log("REWINDING FALSE");
         }
     }
     
@@ -78,7 +80,7 @@ public class Player : MonoBehaviour
             rayColor = Color.red;
         }
         Debug.DrawRay(feet.bounds.center, Vector2.down * (feet.bounds.extents.y + extraHeightText), rayColor);
-        Debug.Log(raycastHit.collider);
+        //Debug.Log(raycastHit.collider);
         return raycastHit.collider != null;
     }
 
