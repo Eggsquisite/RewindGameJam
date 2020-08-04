@@ -80,6 +80,9 @@ public class Player : MonoBehaviour
     {
         axisInput = Input.GetAxis("Horizontal");
 
+        if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D))
+            axisInput = 0;
+
         if (axisInput == 0) {
             if (anim.GetBool("run"))
                 anim.SetBool("run", false);
