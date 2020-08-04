@@ -10,22 +10,26 @@ public class Player : MonoBehaviour
     [SerializeField] float moveSpeed = 40.0f;
     [SerializeField] float jumpForce = 15.0f;
 
+    public RewindManager rm;
     private Rigidbody2D rb;
     private Collider2D feet;
-    public RewindManager rm;
+    private Animator anim;
+    private SpriteRenderer sp;
     private Vector3 movement;
+
+    float axisInput = 0f;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         feet = GetComponent<Collider2D>();
-        
+        anim = GetComponent<Animator>();
+        sp = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     private void Update() {
-        //Move();
         if (IsGrounded() && Input.GetKeyDown(KeyCode.Space))
             Jump();
         RewindTime();
@@ -53,21 +57,6 @@ public class Player : MonoBehaviour
 
     private bool IsGrounded()
     {
-        /*
-        if (feet.IsTouchingLayers(LayerMask.GetMask("Ground")) && !onGround)
-        {
-            Debug.Log("grounded");
-            return true;
-        }
-        else if (!feet.IsTouchingLayers(LayerMask.GetMask("Ground")) && onGround)
-        {
-            Debug.Log("ungrounded");
-            return false;
-        }
-
-        return false;
-        */
-
         float extraHeightText = .1f;
         RaycastHit2D raycastHit = Physics2D.Raycast(feet.bounds.center, Vector2.down, feet.bounds.extents.y + extraHeightText, platformLayerMask);
         Color rayColor;
@@ -81,26 +70,42 @@ public class Player : MonoBehaviour
         }
         Debug.DrawRay(feet.bounds.center, Vector2.down * (feet.bounds.extents.y + extraHeightText), rayColor);
         //Debug.Log(raycastHit.collider);
+
+        anim.SetBool("jump", !(raycastHit.collider != null));
+
         return raycastHit.collider != null;
     }
 
     private void Move()
     {
-        if (Input.GetAxis("Horizontal") == 0) {
+        axisInput = Input.GetAxis("Horizontal");
+
+        if (axisInput == 0) {
+            if (anim.GetBool("run"))
+                anim.SetBool("run", false);
+
             movement = new Vector3(0f, rb.velocity.y);
         }
-        else { 
-            movement = new Vector3(Input.GetAxis("Horizontal") * moveSpeed, rb.velocity.y);
-        } 
+        else {
+            if (axisInput > 0)
+                sp.flipX = true;
+            else if (axisInput < 0)
+                sp.flipX = false;
 
+            if (!anim.GetBool("run"))
+                anim.SetBool("run", true);
+
+            movement = new Vector3(axisInput * moveSpeed, rb.velocity.y);
+        } 
+        
         rb.velocity = movement;
     }
-
 
     private void Jump()
     {
         rb.velocity = new Vector2(rb.velocity.x, 0f);
         rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+        anim.SetBool("jump", true);
     }
 
 }
