@@ -5,42 +5,62 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
     
-    private CharacterController controller;
-    private Vector3 playerVelocity;
-    private bool groundedPlayer;
-    private float playerSpeed = 2.0f;
-    private float jumpHeight = 1.0f;
-    private float gravityValue = -9.81f;
+    [SerializeField] float moveSpeed = 40.0f;
+    [SerializeField] float jumpForce = 15.0f;
+    private Rigidbody2D rb;
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
 
-    void Start() {
-        controller = gameObject.GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
-    void Update() {
-        groundedPlayer = controller.isGrounded;
-        if (groundedPlayer && playerVelocity.y < 0)
-        {
-            playerVelocity.y = 0f;
-        }
-
-        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        controller.Move(move * Time.deltaTime * playerSpeed);
-
-        if (move != Vector3.zero)
-        {
-            gameObject.transform.forward = move;
-        }
-
-        // Changes the height position of the player..
-        if (Input.GetButtonDown("Jump") && groundedPlayer)
-        {
-            playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
-        }
-
-        playerVelocity.y += gravityValue * Time.deltaTime;
-        controller.Move(playerVelocity * Time.deltaTime);
-        
-        if ((controller.collisionFlags & CollisionFlags.Below) != 0) Debug.Log("COLLISION DETECTED");
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.Space) && (rb.velocity.y == 0f)) Jump();
+        RewindTime();
     }
+
+    
+    private void FixedUpdate() {
+        Move();
+        
+    }
+
+    public void RewindTime() {
+        if (Input.GetKeyDown(KeyCode.LeftShift)) {
+            
+            //rm.RewindTime();
+            RewindManager.isRewinding = true;
+            Debug.Log("REWINDING TRUE");
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftShift)) {
+            RewindManager.isRewinding = false;
+            Debug.Log("REWINDING FALSE");
+        }
+    }
+
+
+
+
+    private void Move() {
+       float axisInput = Input.GetAxis("Horizontal");
+
+        if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D))
+            axisInput = 0;
+
+        if (axisInput == 0) {
+            rb.velocity = new Vector3(0f, rb.velocity.y);
+        }
+        else {
+            rb.velocity = new Vector3(axisInput * moveSpeed, rb.velocity.y);
+        }
+    }
+
+    private void Jump()
+    {
+        rb.velocity = new Vector2(rb.velocity.x, 0f);
+        rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+        //anim.SetBool("jump", true);
+    }
+
 }

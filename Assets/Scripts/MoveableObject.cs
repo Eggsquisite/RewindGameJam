@@ -30,7 +30,7 @@ public class MoveableObject : MonoBehaviour {
             }
 
             if (recordRotations) {
-                transform.rotation = ro.RewindRotation(3);
+                transform.rotation = ro.RewindRotation(6);
             }
             //Transform tf = gameObject.GetComponent<RewindObject>().GetPreviousTransform();
             /*Vector3 tf = transform.position; //ignore the RHS, it just keeps an initialized value
