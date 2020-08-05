@@ -43,7 +43,7 @@ public class MoveableObject : MonoBehaviour {
             Debug.Log("New position: " + transform.position);
         }
         else {
-            transform.Translate(Time.deltaTime * velocity);
+            transform.Translate(Time.deltaTime * velocity, Space.World);
             transform.Rotate(rotation);
             if (recordPositions || recordRotations) ro.Add();
         }
