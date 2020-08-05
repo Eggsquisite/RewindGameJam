@@ -13,7 +13,7 @@ public class Block : MonoBehaviour
     public float shakeDuration = 0f;
 
     // Amplitude of the shake. A larger value shakes the camera harder.
-    public float shakeAmount = 0.7f;
+    public float shakeAmount = 0.1f;
     public float decreaseFactor = 1.0f;
 
     Vector3 originalPos;
@@ -33,7 +33,7 @@ public class Block : MonoBehaviour
 
     void OnEnable()
     {
-        originalPos = t.localPosition;
+        
     }
 
     void Update()
@@ -61,14 +61,16 @@ public class Block : MonoBehaviour
     private void Exit()
     {
         coll.enabled = false;
-        anim.SetBool("disappear", true);
+        anim.SetBool("fadeOut", true);
     }
 
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" && !playerEnter)
         {
+            originalPos = t.localPosition;
+            Debug.Log("hi");
             playerEnter = true;
         }
     }

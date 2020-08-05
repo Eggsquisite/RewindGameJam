@@ -32,6 +32,7 @@ public class Player : MonoBehaviour
     private void Update() {
         if (IsGrounded() && Input.GetKeyDown(KeyCode.Space))
             Jump();
+
         RewindTime();
     }
 
@@ -70,7 +71,7 @@ public class Player : MonoBehaviour
             rayColor = Color.red;
         }
         Debug.DrawRay(feet.bounds.center, Vector2.down * (feet.bounds.extents.y + extraHeightText), rayColor);
-        Debug.Log(raycastHit.collider);
+        //Debug.Log(raycastHit.collider);
 
         anim.SetBool("jump", !(raycastHit.collider != null));
 
@@ -112,4 +113,16 @@ public class Player : MonoBehaviour
         anim.SetBool("jump", true);
     }
 
+    private void Light()
+    {
+        anim.SetTrigger("light");
+    }
+
+    public void LightRange(bool status)
+    {
+        if (status)
+            EndTrigger.onAction += Light;
+        else
+            EndTrigger.onAction -= Light;
+    }
 }
