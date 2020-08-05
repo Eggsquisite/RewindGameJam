@@ -50,12 +50,12 @@ public class PlayerMovement : MonoBehaviour {
             
             //rm.RewindTime();
             RewindManager.isRewinding = true;
-            Debug.Log("REWINDING TRUE");
+            //Debug.Log("REWINDING TRUE");
             //rb.velocity = new Vector3(0f, 0f, 0f);
         }
         else if (Input.GetKeyUp(KeyCode.LeftShift)) {
             RewindManager.isRewinding = false;
-            Debug.Log("REWINDING FALSE");
+           // Debug.Log("REWINDING FALSE");
         }
     }
     
@@ -87,7 +87,7 @@ public class PlayerMovement : MonoBehaviour {
         RaycastHit2D hit = Physics2D.Raycast(feet.bounds.center, Vector2.down, feet.bounds.extents.y + extraHeightText, interactiveLayer);
         if (hit.collider != null) {
             projectileGO = hit.transform.parent.gameObject;
-            Debug.Log(projectileGO.name);
+            //Debug.Log(projectileGO.name);
             return true;
         }
         else return false;
@@ -131,6 +131,7 @@ public class PlayerMovement : MonoBehaviour {
     private void AddProjectileForce() {
         Vector2 r = transform.position - projectileGO.transform.position;
         float angularVel = projectileGO.GetComponent<MoveableObject>().GetAngularVelocity();
+        Debug.Log(transform.position + "    " + projectileGO.transform.position + "    " + r);
         rb.AddForce(rb.mass*angularVel*angularVel*r, ForceMode2D.Impulse);
     }
 
