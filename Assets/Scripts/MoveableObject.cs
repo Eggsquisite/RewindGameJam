@@ -10,7 +10,7 @@ public class MoveableObject : MonoBehaviour {
     private RewindableObject ro;
     public bool recordPositions = true;
     public bool recordRotations = false;
-    public int rewindVelocity = 10;
+    public int rewindVelocity = 3;
     public float rewindAccel = 2f;
 
     void Start() {
