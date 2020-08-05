@@ -28,58 +28,6 @@ public class RewindableObject {
     public Quaternion RewindRotation(int amount) {
         return rr.RewindBy(amount);
     }
-
-    /*
-    void Start() {
-        if (saveRotation) recordedRotation = new List<Quaternion>(1000);
-    }*/
-
-    /*
-    void Add() {
-        if (position == recordedPosition.Count) {
-            if (savePosition) recordedPosition.Add(transform.position);
-            if (saveRotation) recordedRotation.Add(transform.rotation);
-            position++;
-        }
-        else {
-            if (savePosition) recordedPosition.Insert(position, transform.position);
-            if (saveRotation) recordedRotation.Insert(position, transform.rotation);
-            position++;
-        }
-    }*/
-    
-    /*void FixedUpdate() {
-        if (!RewindManager.isRewinding) { //only record positions when not rewinding
-            if (position == recordedPosition.Count) {
-                recordedPosition.Add(gameObject.transform.position);
-                if (saveRotation)recordedRotation.Add(gameObject.transform.rotation);
-                position++;
-            }
-            else recordedPosition.Insert(position++, gameObject.transform.position);
-        }
-    }*/
-
-    /*
-    public TransformLite GetPreviousTransform() {
-        if (position > 0) position--;
-        if (savePosition && saveRotation) return new TransformLite(recordedPosition[position], recordedRotation[position]);
-        else if (savePosition) return new TransformLite(recordedPosition[position]);
-        else if (saveRotation) return new TransformLite(recordedRotation[position]);
-        //else return null;
-    }*/
-
-
-    /*
-    public Vector3 GetPreviousPosition() {
-        if (position > 0) return recordedPosition[--position];
-        else return recordedPosition[0];
-    }
-
-   //Only call this after calling GetPreviousPosition
-    public Quaternion GetPreviousRotation() {
-        if (!savePosition)
-        return recordedRotation[position];
-    }*/
 }
 
 public class RecordedPositions {

@@ -1,28 +1,24 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MoveableObject : MonoBehaviour {
-    
+
     public Vector3 velocity = new Vector3(0f,1f,0f);
-    public Vector3 rotation = new Vector3(0f,0f,0f);
-    private RewindableObject ro;
+    public float maxAngularVelocity = 0.25f;
+    //public float reverseAngularVelocity = 1f;
     public bool recordPositions = true;
     public bool recordRotations = false;
-    public int rewindVelocity = 3;
-    public float rewindAccel = 2f;
+    public bool infiniteRotations = true;
+
+    private float angularVelocity;
+
+    private RewindableObject ro;
+    private Vector3 rotVector = Vector3.forward * 2 * (float) (Math.PI);
 
     void Start() {
         if (recordPositions || recordRotations) ro = new RewindableObject(gameObject.transform, recordPositions, recordRotations);
-        //ro = gameObject.GetComponent<RewindObject>();
     }
 
-    /*private void OnEnable() {
-        if ()
-    }*/
-
-    // Update is called once per frame
     void FixedUpdate() {
         if (RewindManager.isRewinding) {
             if (recordPositions) {
@@ -32,22 +28,21 @@ public class MoveableObject : MonoBehaviour {
             if (recordRotations) {
                 transform.rotation = ro.RewindRotation(6);
             }
-            //Transform tf = gameObject.GetComponent<RewindObject>().GetPreviousTransform();
-            /*Vector3 tf = transform.position; //ignore the RHS, it just keeps an initialized value
-            for (int i = 0; i < rewindVelocity; i++) {
-                tf = ro.GetPreviousPosition();
-            }
 
-            transform.position = tf;*/
-            //transform.rotation = tf.rotation;
-            Debug.Log("New position: " + transform.position);
+            if (infiniteRotations) {
+                angularVelocity = maxAngularVelocity * RewindManager.rewindRate * -1f;
+                transform.Rotate(rotVector * angularVelocity);
+            }
         }
         else {
             transform.Translate(Time.deltaTime * velocity, Space.World);
-            transform.Rotate(rotation);
+            angularVelocity = maxAngularVelocity;
+            transform.Rotate(rotVector*angularVelocity);
             if (recordPositions || recordRotations) ro.Add();
         }
     }
-    
-    
+
+    public float GetAngularVelocity() {
+        return angularVelocity;
+    }
 }
