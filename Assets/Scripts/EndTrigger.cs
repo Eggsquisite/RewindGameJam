@@ -25,6 +25,16 @@ public class EndTrigger : MonoBehaviour
             anim = GetComponent<Animator>();
     }
 
+    private void OnEnable()
+    {
+        onAction += BeginRewind;
+    }
+
+    private void OnDisable()
+    {
+        onAction -= BeginRewind;
+    }
+
     private void Update()
     {
         if (inRange && Input.GetKeyDown(KeyCode.E))
@@ -57,10 +67,13 @@ public class EndTrigger : MonoBehaviour
 
     private void BeginRewind()
     {
-        anim.SetBool("lit", true);
+        StartCoroutine(LightUp());
         goal.SetActive(true);
+    }
 
-        gameObject.SetActive(false);
-        
+    private IEnumerator LightUp()
+    {
+        yield return new WaitForSeconds(1f);
+        anim.SetBool("lit", true);
     }
 }
