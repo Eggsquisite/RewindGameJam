@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     private Vector3 movement;
 
     float axisInput = 0f;
+    bool endTrigger = false;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +34,8 @@ public class Player : MonoBehaviour
         if (IsGrounded() && Input.GetKeyDown(KeyCode.Space))
             Jump();
 
-        RewindTime();
+        if (!endTrigger)
+            RewindTime();
     }
 
     
@@ -116,6 +118,7 @@ public class Player : MonoBehaviour
     private void Light()
     {
         anim.SetTrigger("light");
+        endTrigger = true;
     }
 
     public void LightRange(bool status)

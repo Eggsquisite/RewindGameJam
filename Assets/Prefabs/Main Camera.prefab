@@ -98,8 +98,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4a4b8a932133a548b81d74bc03272c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 1
+  scrollSpeed: 1.5
   rewindFactor: 1.5
+  rewindDelay: 2
 --- !u!114 &8539759738252415605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,8 +113,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c68a2834516ea57448a8df758f637b4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  min_X: -10
-  max_X: 10
+  min_X: -5
+  max_X: 20
 --- !u!114 &8539759738252415604
 MonoBehaviour:
   m_ObjectHideFlags: 0
