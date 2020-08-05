@@ -46,6 +46,7 @@ public class Player : MonoBehaviour
             //rm.RewindTime();
             RewindManager.isRewinding = true;
             Debug.Log("REWINDING TRUE");
+            rb.velocity = new Vector3(0f, 0f, 0f);
         }
         else if (Input.GetKeyUp(KeyCode.LeftShift)) {
             RewindManager.isRewinding = false;
@@ -69,7 +70,7 @@ public class Player : MonoBehaviour
             rayColor = Color.red;
         }
         Debug.DrawRay(feet.bounds.center, Vector2.down * (feet.bounds.extents.y + extraHeightText), rayColor);
-        //Debug.Log(raycastHit.collider);
+        Debug.Log(raycastHit.collider);
 
         anim.SetBool("jump", !(raycastHit.collider != null));
 
@@ -91,9 +92,9 @@ public class Player : MonoBehaviour
         }
         else {
             if (axisInput > 0)
-                sp.flipX = true;
-            else if (axisInput < 0)
                 sp.flipX = false;
+            else if (axisInput < 0)
+                sp.flipX = true;
 
             if (!anim.GetBool("run"))
                 anim.SetBool("run", true);
@@ -106,7 +107,7 @@ public class Player : MonoBehaviour
 
     private void Jump()
     {
-        rb.velocity = new Vector2(rb.velocity.x, 0f);
+        //rb.velocity = new Vector2(rb.velocity.x, 0f);
         rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
         anim.SetBool("jump", true);
     }

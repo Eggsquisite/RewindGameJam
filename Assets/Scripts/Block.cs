@@ -69,7 +69,6 @@ public class Block : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("true");
             playerEnter = true;
         }
     }

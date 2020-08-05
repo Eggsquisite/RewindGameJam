@@ -26,7 +26,7 @@ public class MoveableObject : MonoBehaviour {
     void FixedUpdate() {
         if (RewindManager.isRewinding) {
             if (recordPositions) {
-                transform.position = ro.RewindPosition(3);
+                transform.position = ro.RewindPosition(10);
             }
 
             if (recordRotations) {

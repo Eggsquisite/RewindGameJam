@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EndTrigger : MonoBehaviour
 {
     [SerializeField] GameObject doorTwo;
     [SerializeField] float endDelay = 1f;
-
+    [SerializeField] bool endDoor = false;
+    [SerializeField] GameObject endText = null;
     GameObject cam;
 
     // Start is called before the first frame update
@@ -19,8 +21,10 @@ public class EndTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.tag == "Player" && !endDoor)
             BeginRewind();
+        else if (collision.tag == "Player" && endDoor)
+            EndLevel();
     }
 
     private void BeginRewind()
@@ -31,5 +35,11 @@ public class EndTrigger : MonoBehaviour
             doorTwo.SetActive(true);
             gameObject.SetActive(false);
         }
+    }
+
+    private void EndLevel()
+    {
+        endText.SetActive(true);
+        endText.GetComponent<Text>().text = "Level Won!";
     }
 }
