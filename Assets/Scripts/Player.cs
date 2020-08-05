@@ -18,7 +18,9 @@ public class Player : MonoBehaviour
     private Vector3 movement;
 
     float axisInput = 0f;
+    float gravityScale;
     bool endTrigger = false;
+    bool rewinding = false;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +29,7 @@ public class Player : MonoBehaviour
         feet = GetComponent<Collider2D>();
         anim = GetComponent<Animator>();
         sp = GetComponent<SpriteRenderer>();
+        gravityScale = rb.gravityScale;
     }
 
     // Update is called once per frame
@@ -36,11 +39,15 @@ public class Player : MonoBehaviour
 
         if (!endTrigger)
             RewindTime();
+
+        if (rewinding)
+            Stasis();
     }
 
     
     private void FixedUpdate() {
-        Move();
+        if (!rewinding)
+            Move();
     }
 
     public void RewindTime() {
@@ -49,11 +56,15 @@ public class Player : MonoBehaviour
             //rm.RewindTime();
             RewindManager.isRewinding = true;
             Debug.Log("REWINDING TRUE");
-            rb.velocity = new Vector3(0f, 0f, 0f);
+
+            rewinding = true;
         }
         else if (Input.GetKeyUp(KeyCode.LeftShift)) {
             RewindManager.isRewinding = false;
             Debug.Log("REWINDING FALSE");
+
+            rewinding = false;
+            rb.gravityScale = gravityScale;
         }
     }
     
@@ -113,6 +124,12 @@ public class Player : MonoBehaviour
         //rb.velocity = new Vector2(rb.velocity.x, 0f);
         rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
         anim.SetBool("jump", true);
+    }
+
+    private void Stasis()
+    {
+        rb.gravityScale = 0;
+        rb.velocity = Vector3.zero;
     }
 
     private void Light()
