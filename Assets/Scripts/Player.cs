@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     private Vector3 movement;
 
     float axisInput = 0f;
+    bool endTrigger = false;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +33,9 @@ public class Player : MonoBehaviour
     private void Update() {
         if (IsGrounded() && Input.GetKeyDown(KeyCode.Space))
             Jump();
-        RewindTime();
+
+        if (!endTrigger)
+            RewindTime();
     }
 
     
@@ -46,6 +49,7 @@ public class Player : MonoBehaviour
             //rm.RewindTime();
             RewindManager.isRewinding = true;
             Debug.Log("REWINDING TRUE");
+            rb.velocity = new Vector3(0f, 0f, 0f);
         }
         else if (Input.GetKeyUp(KeyCode.LeftShift)) {
             RewindManager.isRewinding = false;
@@ -91,9 +95,9 @@ public class Player : MonoBehaviour
         }
         else {
             if (axisInput > 0)
-                sp.flipX = true;
-            else if (axisInput < 0)
                 sp.flipX = false;
+            else if (axisInput < 0)
+                sp.flipX = true;
 
             if (!anim.GetBool("run"))
                 anim.SetBool("run", true);
@@ -106,9 +110,25 @@ public class Player : MonoBehaviour
 
     private void Jump()
     {
-        rb.velocity = new Vector2(rb.velocity.x, 0f);
+        //rb.velocity = new Vector2(rb.velocity.x, 0f);
         rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
         anim.SetBool("jump", true);
     }
 
+    private void Light()
+    {
+        if (!endTrigger)
+        {
+            anim.SetTrigger("light");
+            endTrigger = true;
+        }
+    }
+
+    public void LightRange(bool status)
+    {
+        if (status)
+            EndTrigger.onAction += Light;
+        else
+            EndTrigger.onAction -= Light;
+    }
 }

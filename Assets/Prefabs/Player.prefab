@@ -139,7 +139,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   moveSpeed: 5
-  jumpForce: 10
+  jumpForce: 12
   rm: {fileID: 0}
 --- !u!95 &7798430557772803320
 Animator:
