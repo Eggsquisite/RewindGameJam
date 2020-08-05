@@ -7,8 +7,13 @@ public class Player : MonoBehaviour
     const float GRAVITY = -1f;
 
     [SerializeField] private LayerMask platformLayerMask;
+
+    [Header("Movement Stats")]
     [SerializeField] float moveSpeed = 40.0f;
     [SerializeField] float jumpForce = 15.0f;
+
+    [Header("Player Stats")]
+    [SerializeField] int health = 3;
 
     public RewindManager rm;
     private Rigidbody2D rb;
