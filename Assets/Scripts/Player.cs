@@ -117,8 +117,11 @@ public class Player : MonoBehaviour
 
     private void Light()
     {
-        anim.SetTrigger("light");
-        endTrigger = true;
+        if (!endTrigger)
+        {
+            anim.SetTrigger("light");
+            endTrigger = true;
+        }
     }
 
     public void LightRange(bool status)
