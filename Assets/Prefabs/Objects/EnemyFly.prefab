@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 3613503000740257004}
   - component: {fileID: 3613503000740256785}
-  - component: {fileID: 3613503000740256786}
-  - component: {fileID: 3613503000740256787}
   - component: {fileID: 3613503000740256784}
   - component: {fileID: 3613503000740256791}
   - component: {fileID: 3613503000740256790}
+  - component: {fileID: 493244032}
+  - component: {fileID: 493244033}
   m_Layer: 12
   m_Name: EnemyFly
   m_TagString: Untagged
@@ -65,56 +65,6 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
---- !u!114 &3613503000740256786
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3613503000740257005}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6eb1402c17e84a9282a7f0f62eb584f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 2
-  radius: 0.22
-  height: 2
-  repathRate: 0.5
-  canSearch: 1
-  canMove: 1
-  maxSpeed: 2
-  gravity: {x: 0, y: 0, z: 0}
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  centerOffsetCompatibility: NaN
-  orientation: 1
-  enableRotation: 0
-  targetCompatibility: {fileID: 0}
-  maxAcceleration: -2.5
-  rotationSpeed: 360
-  slowdownDistance: 0.6
-  pickNextWaypointDist: 1.2
-  endReachedDistance: 0.2
-  alwaysDrawGizmos: 0
-  slowWhenNotFacingTarget: 1
-  whenCloseToDestination: 0
-  constrainInsideGraph: 0
---- !u!114 &3613503000740256787
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3613503000740257005}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9679e68a0f1144e79c664d9a11ca121, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1
-  target: {fileID: 0}
 --- !u!114 &3613503000740256784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,19 +111,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
---- !u!114 &3613503001550529120
+--- !u!50 &493244032
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3613503000740257005}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 1
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &493244033
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4581614215940977272}
+  m_GameObject: {fileID: 3613503000740257005}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33b1409b0d0840e47b802681054954f2, type: 3}
+  m_Script: {fileID: 11500000, guid: a70b80733e22c024faef966ef9a486d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aiPath: {fileID: 3613503000740256786}
+  target: {fileID: 0}
+  speed: 250
+  nextWaypointDistanceMin: 1
+  nextWayPointDistanceMax: 2
 --- !u!1001 &3613503002513672863
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -243,12 +217,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d81536a8cddd6f844bc57bb41683dbb5, type: 3}
---- !u!1 &4581614215940977272 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 986451111422998759, guid: d81536a8cddd6f844bc57bb41683dbb5,
-    type: 3}
-  m_PrefabInstance: {fileID: 3613503002513672863}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4581614215940977277 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 986451111422998754, guid: d81536a8cddd6f844bc57bb41683dbb5,
