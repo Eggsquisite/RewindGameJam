@@ -8,7 +8,7 @@ public class RewindManager : MonoBehaviour {
     
     void Update() {
 
-        if (Input.GetKeyDown(KeyCode.LeftShift)) RewindManager.isRewinding = true;
-        else if (Input.GetKeyUp(KeyCode.LeftShift)) RewindManager.isRewinding = false;
+        //if (Input.GetKeyDown(KeyCode.LeftShift)) RewindManager.isRewinding = true;
+        //else if (Input.GetKeyUp(KeyCode.LeftShift)) RewindManager.isRewinding = false;
     }
 }

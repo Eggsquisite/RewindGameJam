@@ -25,8 +25,7 @@ public class PlayerMovement : MonoBehaviour {
     private bool isGrounded = false;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         rb = GetComponent<Rigidbody2D>();
         feet = GetComponent<Collider2D>();
         anim = GetComponent<Animator>();
@@ -38,12 +37,10 @@ public class PlayerMovement : MonoBehaviour {
         horizontalInput = Input.GetAxis("Horizontal");
         if (!rewindEnabled) CheckRewindInput();
         if (IsGrounded() && Input.GetKeyDown(KeyCode.Space)) jumpBool = true;
-        
     }
-    
+
     //Do ALL Physics and movement stuff here
     private void FixedUpdate() {
-        
         Move();
         if (RewindManager.isRewinding && IsOnProjectile()) AddProjectileForce();
     }
@@ -52,7 +49,7 @@ public class PlayerMovement : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.LeftShift)) RewindManager.isRewinding = true;
         else if (Input.GetKeyUp(KeyCode.LeftShift)) RewindManager.isRewinding = false;
     }
-    
+
     private bool IsGrounded() {
         float extraHeightText = .1f;
         RaycastHit2D raycastHit = Physics2D.Raycast(feet.bounds.center, Vector2.down, feet.bounds.extents.y + extraHeightText, platformLayerMask);
@@ -74,13 +71,12 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     private void Move() {
-
         if (inAir && IsGrounded()) { //check for ground every frame while airborn
             anim.SetBool("jump", false);
             inAir = false;
             Debug.Log("We hit the ground");
         }
-        
+
         if (jumpBool && IsGrounded()) {
             rb.AddForce(new Vector2(0f, jumpForce));
             anim.SetBool("jump", true);
@@ -90,23 +86,15 @@ public class PlayerMovement : MonoBehaviour {
         }
         else jumpBool = false;
 
-        
-        
-        //if (horizontalInput != 0) {
-            //Debug.Log(horizontalInput);
-            if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)) horizontalInput = 0;
+        if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)) horizontalInput = 0;
 
-            if (horizontalInput == 0 && rb.velocity.x == 0) anim.SetBool("run", false);
-            else anim.SetBool("run", true);
-            
-            if (horizontalInput > 0) sp.flipX = false;
-            else if (horizontalInput < 0) sp.flipX = true;
+        if (horizontalInput == 0 && rb.velocity.x == 0) anim.SetBool("run", false);
+        else anim.SetBool("run", true);
 
-            rb.velocity = new Vector2(horizontalInput*maxSpeed, rb.velocity.y);
+        if (horizontalInput > 0) sp.flipX = false;
+        else if (horizontalInput < 0) sp.flipX = true;
 
-        //}
-
-        
+        rb.velocity = new Vector2(horizontalInput * maxSpeed, rb.velocity.y);
     }
 
     private void Jump() {
@@ -120,9 +108,9 @@ public class PlayerMovement : MonoBehaviour {
         Vector2 r2 = new Vector2(r.y, -r.x);
         float angularVel = projectileGO.GetComponent<MoveableObject>().GetAngularVelocity();
         //Debug.Log(transform.position + "    " + projectileGO.transform.position + "    " + r);
-        rb.AddForce(rb.mass*angularVel*angularVel*r*60f);
-        rb.AddForce(rb.mass*angularVel*angularVel*r2*50f);
-        Debug.Log(rb.mass*angularVel*angularVel*r);
+        rb.AddForce(rb.mass * angularVel * angularVel * r * 60f);
+        rb.AddForce(rb.mass * angularVel * angularVel * r2 * 50f);
+        Debug.Log(rb.mass * angularVel * angularVel * r);
     }
 
     private void Light() {
@@ -132,10 +120,10 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
-    public void LightRange(bool status) {
+    /*public void LightRange(bool status) {
         if (status)
             EndTrigger.onAction += Light;
         else
             EndTrigger.onAction -= Light;
-    }
+    }*/
 }
