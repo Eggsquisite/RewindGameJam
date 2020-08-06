@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public delegate void PlayerDeath();
+    public static event PlayerDeath restartLevel;
+
+    public delegate void Target(Transform target);
+    public static event Target playerTarget;
+
     [SerializeField] private LayerMask platformLayerMask;
-    public RewindManager rm;
-    [SerializeField] LevelManager lm;
+    [SerializeField] RewindManager rm;
     [SerializeField] float deathDelay = 2f;
 
     [Header("Movement Stats")]
@@ -42,6 +47,7 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
         sp = GetComponent<SpriteRenderer>();
         gravityScale = rb.gravityScale;
+        playerTarget(this.transform);
     }
 
     private void OnEnable()
@@ -110,7 +116,7 @@ public class Player : MonoBehaviour
 
     private bool IsGrounded()
     {
-        float extraHeightText = .1f;
+        float extraHeightText = .2f;
         RaycastHit2D raycastHit = Physics2D.Raycast(feet.bounds.center, Vector2.down, feet.bounds.extents.y + extraHeightText, platformLayerMask);
         Color rayColor;
 
@@ -189,14 +195,14 @@ public class Player : MonoBehaviour
 
     public void Hurt(int dmg)
     {
-        if (!recovery && !invincible)
-        {
-            health -= dmg;
-            recovery = true;
-            Debug.Log("health: " + health);
-            anim.SetTrigger("hurt");
-            StartCoroutine(RecoveryDelay());
-        }
+        if (recovery || invincible)
+            return;
+
+        health -= dmg;
+        recovery = true;
+        Debug.Log("health: " + health);
+        anim.SetTrigger("hurt");
+        StartCoroutine(RecoveryDelay());
 
         if (health <= 0) 
             StartCoroutine(Death());
@@ -227,6 +233,6 @@ public class Player : MonoBehaviour
         rb.velocity = Vector3.zero;
 
         yield return new WaitForSeconds(deathDelay);
-        lm.RestartLevel();
+        restartLevel();
     }
 }

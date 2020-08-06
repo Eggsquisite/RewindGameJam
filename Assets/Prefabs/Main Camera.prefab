@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 154942752}
   - component: {fileID: 154942753}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: RightWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,7 +67,7 @@ GameObject:
   m_Component:
   - component: {fileID: 299341435}
   - component: {fileID: 299341436}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: LeftWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -431,7 +431,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollSpeed: 1.5
-  rewindFactor: 2
+  rewindFactor: 1.5
 --- !u!114 &8539759738252415605
 MonoBehaviour:
   m_ObjectHideFlags: 0

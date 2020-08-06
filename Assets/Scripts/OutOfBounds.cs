@@ -2,15 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Damage : MonoBehaviour
+public class OutOfBounds : MonoBehaviour
 {
-    [SerializeField] int damage = 1;
-
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
-            collision.GetComponent<Player>().Hurt(damage);
+            collision.GetComponent<Player>().OutOfBounds();
         }
     }
 }

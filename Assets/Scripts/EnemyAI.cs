@@ -6,8 +6,7 @@ using Pathfinding;
 public class EnemyAI : MonoBehaviour
 {
 
-    public Transform target;
-
+    private Transform target;
     public float speedMin = 200f;
     public float speedMax = 250f;
     public float nextWaypointDistanceMin = 1f;
@@ -23,6 +22,16 @@ public class EnemyAI : MonoBehaviour
     Seeker seeker;
     Rigidbody2D rb;
 
+    private void OnEnable()
+    {
+        Player.playerTarget += AcquirePlayer;
+    }
+
+    private void OnDisable()
+    {
+        Player.playerTarget -= AcquirePlayer;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +40,13 @@ public class EnemyAI : MonoBehaviour
         speed = Random.Range(speedMin, speedMax);
 
         InvokeRepeating("UpdatePath", 0f, 0.5f);
+    }
+
+    void AcquirePlayer(Transform player)
+    {
+        Debug.Log("this event doesn't work yet");
+        target = player;
+        Debug.Log(target);
     }
 
     void UpdatePath()
@@ -49,6 +65,12 @@ public class EnemyAI : MonoBehaviour
     }
 
     private void Update()
+    {
+        if (target != null)
+            CheckPlayerRange();
+    }
+
+    private void CheckPlayerRange()
     {
         float distanceToPlayer = Vector2.Distance(rb.position, target.position);
         if (distanceToPlayer <= distanceToDetectPlayer && !inRangeOfPlayer)
