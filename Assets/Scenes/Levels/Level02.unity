@@ -1047,6 +1047,11 @@ PrefabInstance:
       propertyPath: lm
       value: 
       objectReference: {fileID: 1151542053}
+    - target: {fileID: 5613546256454360093, guid: bcd33bf33dd36e54c987a7dc9d51edfd,
+        type: 3}
+      propertyPath: interactiveLayer.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
     - target: {fileID: 5613546256454360095, guid: bcd33bf33dd36e54c987a7dc9d51edfd,
         type: 3}
       propertyPath: m_LocalPosition.x
