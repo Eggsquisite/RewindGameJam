@@ -145,10 +145,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  speed: 250
-  nextWaypointDistanceMin: 1
-  nextWayPointDistanceMax: 2
-  distanceToDetectPlayer: 7
+  speedMin: 200
+  speedMax: 250
+  nextWaypointDistanceMin: 0.5
+  nextWayPointDistanceMax: 1
+  distanceToDetectPlayer: 8
 --- !u!1001 &3613503002513672863
 PrefabInstance:
   m_ObjectHideFlags: 0
