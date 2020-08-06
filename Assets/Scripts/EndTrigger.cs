@@ -70,6 +70,8 @@ public class EndTrigger : MonoBehaviour
     {
         StartCoroutine(LightUp());
         goal.SetActive(true);
+        goal.GetComponent<Collider2D>().enabled = true;
+        goal.GetComponent<Animator>().SetTrigger("fadeIn");
     }
 
     private IEnumerator LightUp()

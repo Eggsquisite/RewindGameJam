@@ -14,12 +14,14 @@ public class CamMovement : MonoBehaviour
 
     private void OnEnable()
     {
-        EndTrigger.onAction += Rewind;
+        EndTrigger.onAction += End;
+        StartTrigger.onStart += Begin;
     }
 
     private void OnDisable()
     {
-        EndTrigger.onAction -= Rewind;
+        EndTrigger.onAction -= End;
+        StartTrigger.onStart -= Begin;
     }
 
     // Update is called once per frame
@@ -39,11 +41,25 @@ public class CamMovement : MonoBehaviour
         pause = status;
     }
 
-    public void Rewind(float delay) {
-        EndTrigger.onAction -= Rewind;
+    public void Begin(float delay)
+    {
+        StartTrigger.onStart -= Begin;
+        Pause(true);
+        Invoke("BeginStart", delay);
+    }
+
+    private void BeginStart()
+    {
+        Pause(false);
+    }
+
+
+    public void End(float delay) {
+        EndTrigger.onAction -= End;
         Pause(true);
         Invoke("EndStart", delay);
     }
+
 
     private void EndStart()
     {

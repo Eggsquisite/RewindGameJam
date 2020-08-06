@@ -11,6 +11,7 @@ public class Goal : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
+            collision.GetComponent<Player>().Invincible(true);
             StartCoroutine(LoadNextLevel());
         }
     }

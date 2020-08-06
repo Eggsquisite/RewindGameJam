@@ -27,12 +27,14 @@ public class Player : MonoBehaviour
     float axisInput = 0f;
     float gravityScale;
     bool endTrigger = false;
+    bool invincible = false;
     bool rewinding = false;
     bool recovery = false;
+    bool spawning = false;
     bool death = false;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         cam = Camera.main.GetComponent<CamMovement>();
         rb = GetComponent<Rigidbody2D>();
@@ -42,9 +44,23 @@ public class Player : MonoBehaviour
         gravityScale = rb.gravityScale;
     }
 
+    private void OnEnable()
+    {
+        StartTrigger.onStart += Spawn;
+    }
+
+    private void OnDisable()
+    {
+        StartTrigger.onStart -= Spawn;
+    }
+
+
     // Update is called once per frame
     private void Update() {
-        if (IsGrounded() && Input.GetKeyDown(KeyCode.Space) && !death)
+        if (death || spawning)
+            return;
+
+        if (IsGrounded() && Input.GetKeyDown(KeyCode.Space))
             Jump();
 
         if (!endTrigger)
@@ -56,8 +72,10 @@ public class Player : MonoBehaviour
 
     
     private void FixedUpdate() {
-        if (!rewinding && !death)
-            Move();
+        if (rewinding || death || spawning)
+            return; 
+
+        Move();
     }
 
     public void RewindTime() {
@@ -77,8 +95,18 @@ public class Player : MonoBehaviour
             rb.gravityScale = gravityScale;
         }
     }
-    
 
+    private void Spawn(float delay)
+    {
+        spawning = true;
+        Invoke("SpawnReady", delay / 2);
+    }
+
+    private void SpawnReady()
+    {
+        spawning = false;
+        sp.enabled = true;
+    }
 
     private bool IsGrounded()
     {
@@ -161,7 +189,7 @@ public class Player : MonoBehaviour
 
     public void Hurt(int dmg)
     {
-        if (!recovery)
+        if (!recovery && !invincible)
         {
             health -= dmg;
             recovery = true;
@@ -170,8 +198,13 @@ public class Player : MonoBehaviour
             StartCoroutine(RecoveryDelay());
         }
 
-        if (health == 0) 
+        if (health <= 0) 
             StartCoroutine(Death());
+    }
+
+    public void Invincible(bool status)
+    {
+        invincible = status;
     }
 
     private IEnumerator RecoveryDelay()

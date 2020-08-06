@@ -8,12 +8,14 @@ public class EnemyAI : MonoBehaviour
 
     public Transform target;
 
-    public float speed = 200f;
+    public float speedMin = 200f;
+    public float speedMax = 250f;
     public float nextWaypointDistanceMin = 1f;
     public float nextWayPointDistanceMax = 3f;
     public float distanceToDetectPlayer = 5f;
 
     Path path;
+    float speed;
     int currentWaypoint = 0;
     bool inRangeOfPlayer = false;
     bool reachedEndOfPath = false;
@@ -26,6 +28,7 @@ public class EnemyAI : MonoBehaviour
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
+        speed = Random.Range(speedMin, speedMax);
 
         InvokeRepeating("UpdatePath", 0f, 0.5f);
     }

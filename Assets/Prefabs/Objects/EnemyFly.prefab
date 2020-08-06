@@ -149,7 +149,6 @@ MonoBehaviour:
   nextWaypointDistanceMin: 1
   nextWayPointDistanceMax: 2
   distanceToDetectPlayer: 7
-  inRangeOfPlayer: 0
 --- !u!1001 &3613503002513672863
 PrefabInstance:
   m_ObjectHideFlags: 0
