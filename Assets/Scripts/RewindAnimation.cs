@@ -27,9 +27,13 @@ public class RewindAnimation : MonoBehaviour
         anim.SetFloat("rewind", rewindFactor);
     }
 
-    private void EndGlitch()
+    private void EndGlitch(float delay)
     {
-        Debug.Log("glitching");
+        Invoke("GlitchAnim", delay);
+    }
+
+    private void GlitchAnim()
+    { 
         anim.SetTrigger("glitch");
     }
 }

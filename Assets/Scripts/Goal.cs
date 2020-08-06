@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class Goal : MonoBehaviour
 {
-    [SerializeField] LevelManager lm;
+    public delegate void LevelWon();
+    public static event LevelWon loadLevel;
+
     [SerializeField] float delay = 2f;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
+            collision.GetComponent<Player>().Invincible(true);
             StartCoroutine(LoadNextLevel());
         }
     }
@@ -18,7 +21,6 @@ public class Goal : MonoBehaviour
     IEnumerator LoadNextLevel()
     {
         yield return new WaitForSeconds(delay);
-
-        lm.LoadNextLevel();
+        loadLevel();
     }
 }

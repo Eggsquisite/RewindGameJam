@@ -95,5 +95,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1335f33f55bc80947895ffe1c47051a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeToColorAmount: 0
-  transitionSpeed: 0.25
+  fadeToColorAmount: 0.15
+  transitionSpeed: 0.4
+  delay: 1

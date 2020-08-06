@@ -9,7 +9,6 @@ public class EndCollapse : MonoBehaviour
     [SerializeField] float fadeToColorAmount = 0f;
 
     [SerializeField] float transitionSpeed = 0.05f;
-    [SerializeField] float delay = 1f;
 
     SpriteRenderer sp;
     bool endTrigger = false;
@@ -36,9 +35,8 @@ public class EndCollapse : MonoBehaviour
         EndTrigger.onAction -= StartFadeToRed;
     }
 
-    IEnumerator Delay()
+    private void Begin()
     {
-        yield return new WaitForSeconds(delay);
         StartCoroutine(FadeToRed());
     }
 
@@ -57,11 +55,11 @@ public class EndCollapse : MonoBehaviour
         }
     }
 
-    public void StartFadeToRed()
+    public void StartFadeToRed(float delay)
     {
         if (!endTrigger)
         {
-            StartCoroutine(Delay());
+            Invoke("Begin", delay);
             endTrigger = true;
         }
     }

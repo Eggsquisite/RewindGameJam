@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    const float GRAVITY = -1f;
+    public delegate void PlayerDeath();
+    public static event PlayerDeath restartLevel;
+
+    public delegate void Target(Transform target);
+    public static event Target playerTarget;
 
     [SerializeField] private LayerMask platformLayerMask;
+    [SerializeField] RewindManager rm;
+    [SerializeField] float deathDelay = 2f;
 
     [Header("Movement Stats")]
     [SerializeField] float moveSpeed = 40.0f;
@@ -14,8 +20,9 @@ public class Player : MonoBehaviour
 
     [Header("Player Stats")]
     [SerializeField] int health = 3;
+    [SerializeField] float recoveryDelay = 2f;
 
-    public RewindManager rm;
+    private CamMovement cam;
     private Rigidbody2D rb;
     private Collider2D feet;
     private Animator anim;
@@ -25,20 +32,40 @@ public class Player : MonoBehaviour
     float axisInput = 0f;
     float gravityScale;
     bool endTrigger = false;
+    bool invincible = false;
     bool rewinding = false;
+    bool recovery = false;
+    bool spawning = false;
+    bool death = false;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        cam = Camera.main.GetComponent<CamMovement>();
         rb = GetComponent<Rigidbody2D>();
         feet = GetComponent<Collider2D>();
         anim = GetComponent<Animator>();
         sp = GetComponent<SpriteRenderer>();
         gravityScale = rb.gravityScale;
+        playerTarget(this.transform);
     }
+
+    private void OnEnable()
+    {
+        StartTrigger.onStart += Spawn;
+    }
+
+    private void OnDisable()
+    {
+        StartTrigger.onStart -= Spawn;
+    }
+
 
     // Update is called once per frame
     private void Update() {
+        if (death || spawning)
+            return;
+
         if (IsGrounded() && Input.GetKeyDown(KeyCode.Space))
             Jump();
 
@@ -51,8 +78,10 @@ public class Player : MonoBehaviour
 
     
     private void FixedUpdate() {
-        if (!rewinding)
-            Move();
+        if (rewinding || death || spawning)
+            return; 
+
+        Move();
     }
 
     public void RewindTime() {
@@ -72,12 +101,22 @@ public class Player : MonoBehaviour
             rb.gravityScale = gravityScale;
         }
     }
-    
 
+    private void Spawn(float delay)
+    {
+        spawning = true;
+        Invoke("SpawnReady", delay / 2);
+    }
+
+    private void SpawnReady()
+    {
+        spawning = false;
+        sp.enabled = true;
+    }
 
     private bool IsGrounded()
     {
-        float extraHeightText = .1f;
+        float extraHeightText = .2f;
         RaycastHit2D raycastHit = Physics2D.Raycast(feet.bounds.center, Vector2.down, feet.bounds.extents.y + extraHeightText, platformLayerMask);
         Color rayColor;
 
@@ -137,7 +176,7 @@ public class Player : MonoBehaviour
         rb.velocity = Vector3.zero;
     }
 
-    private void Light()
+    private void Light(float delay)
     {
         if (!endTrigger)
         {
@@ -152,5 +191,48 @@ public class Player : MonoBehaviour
             EndTrigger.onAction += Light;
         else
             EndTrigger.onAction -= Light;
+    }
+
+    public void Hurt(int dmg)
+    {
+        if (recovery || invincible)
+            return;
+
+        health -= dmg;
+        recovery = true;
+        Debug.Log("health: " + health);
+        anim.SetTrigger("hurt");
+        StartCoroutine(RecoveryDelay());
+
+        if (health <= 0) 
+            StartCoroutine(Death());
+    }
+
+    public void Invincible(bool status)
+    {
+        invincible = status;
+    }
+
+    private IEnumerator RecoveryDelay()
+    {
+        yield return new WaitForSeconds(recoveryDelay);
+        recovery = false;
+    }
+
+    public void OutOfBounds()
+    {
+        StartCoroutine(Death());
+    }
+
+    private IEnumerator Death()
+    {
+        cam.Pause(true);
+        death = true;
+        recovery = true;
+        anim.SetTrigger("death");
+        rb.velocity = Vector3.zero;
+
+        yield return new WaitForSeconds(deathDelay);
+        restartLevel();
     }
 }
