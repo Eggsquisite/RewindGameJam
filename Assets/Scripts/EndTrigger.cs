@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class EndTrigger : MonoBehaviour
 {
+    public delegate void TriggerAction(float delay);
+    public static event TriggerAction onAction;
+
     [SerializeField] GameObject goal = null;
     [SerializeField] GameObject endText = null;
     [SerializeField] float delay = 2f;
-
-    public delegate void TriggerAction(float delay);
-    public static event TriggerAction onAction;
 
     GameObject cam;
     Animator anim;
@@ -40,8 +40,8 @@ public class EndTrigger : MonoBehaviour
     {
         if (inRange && Input.GetKeyDown(KeyCode.E))
         { 
-            onAction(delay);
-            Debug.Log("E pressed");        
+            if (onAction != null)
+                onAction(delay);
         }
     }
 

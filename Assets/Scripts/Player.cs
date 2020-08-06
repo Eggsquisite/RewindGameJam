@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
     bool death = false;
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         cam = Camera.main.GetComponent<CamMovement>();
         rb = GetComponent<Rigidbody2D>();
@@ -47,7 +47,9 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
         sp = GetComponent<SpriteRenderer>();
         gravityScale = rb.gravityScale;
-        playerTarget(this.transform);
+
+        if (playerTarget != null)
+            playerTarget(this.transform);
     }
 
     private void OnEnable()
