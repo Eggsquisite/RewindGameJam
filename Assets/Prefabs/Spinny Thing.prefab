@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9106225433903794046}
   - component: {fileID: 9106225433903794047}
   - component: {fileID: 9106225433903794040}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Spoke2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 9106225434112879165}
   - component: {fileID: 9106225434112879166}
   - component: {fileID: 9106225434112879167}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Spoke1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -226,7 +226,8 @@ GameObject:
   m_Component:
   - component: {fileID: 9106225435173291626}
   - component: {fileID: 9106225435173291625}
-  m_Layer: 8
+  - component: {fileID: 1940654366}
+  m_Layer: 10
   m_Name: Spinny Thing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,12 +263,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 775dee7525a42f24690f882533ac7bac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: {x: 0, y: 0, z: 0}
-  rotation: {x: 0, y: 0, z: 1}
-  recordPositions: 1
-  recordRotations: 1
-  rewindVelocity: 10
-  rewindAccel: 2
+  velocity: {x: 0, y: 0}
+  maxAngularVelocity: 0.25
+  recordPositions: 0
+  recordRotations: 0
+  infiniteRotations: 1
+--- !u!50 &1940654366
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9106225435173291627}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 2000
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 3
 --- !u!1 &9106225435798245086
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,7 +301,7 @@ GameObject:
   - component: {fileID: 9106225435798245074}
   - component: {fileID: 9106225435798245075}
   - component: {fileID: 9106225435798245084}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}

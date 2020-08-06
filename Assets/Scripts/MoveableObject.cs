@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class MoveableObject : MonoBehaviour {
 
-    public Vector3 velocity = new Vector3(0f,1f,0f);
-    public float maxAngularVelocity = 0.25f;
+    public Vector2 velocity = new Vector2(0f,0f);
+    public float maxAngularVelocity = 0f;
     //public float reverseAngularVelocity = 1f;
     public bool recordPositions = true;
     public bool recordRotations = false;
