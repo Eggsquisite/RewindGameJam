@@ -7,6 +7,9 @@ public class Player : MonoBehaviour
     const float GRAVITY = -1f;
 
     [SerializeField] private LayerMask platformLayerMask;
+    public RewindManager rm;
+    [SerializeField] LevelManager lm;
+    [SerializeField] float deathDelay = 2f;
 
     [Header("Movement Stats")]
     [SerializeField] float moveSpeed = 40.0f;
@@ -14,8 +17,9 @@ public class Player : MonoBehaviour
 
     [Header("Player Stats")]
     [SerializeField] int health = 3;
+    [SerializeField] float recoveryDelay = 2f;
 
-    public RewindManager rm;
+    private CamMovement cam;
     private Rigidbody2D rb;
     private Collider2D feet;
     private Animator anim;
@@ -26,10 +30,13 @@ public class Player : MonoBehaviour
     float gravityScale;
     bool endTrigger = false;
     bool rewinding = false;
+    bool recovery = false;
+    bool death = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        cam = Camera.main.GetComponent<CamMovement>();
         rb = GetComponent<Rigidbody2D>();
         feet = GetComponent<Collider2D>();
         anim = GetComponent<Animator>();
@@ -51,7 +58,7 @@ public class Player : MonoBehaviour
 
     
     private void FixedUpdate() {
-        if (!rewinding)
+        if (!rewinding && !death)
             Move();
     }
 
@@ -152,5 +159,43 @@ public class Player : MonoBehaviour
             EndTrigger.onAction += Light;
         else
             EndTrigger.onAction -= Light;
+    }
+
+    public void Hurt(int dmg)
+    {
+        if (!recovery)
+        {
+            health -= dmg;
+            recovery = true;
+            Debug.Log("health: " + health);
+            anim.SetTrigger("hurt");
+            StartCoroutine(RecoveryDelay());
+        }
+
+        if (health == 0) 
+            StartCoroutine(Death());
+    }
+
+    private IEnumerator RecoveryDelay()
+    {
+        yield return new WaitForSeconds(recoveryDelay);
+        recovery = false;
+    }
+
+    public void OutOfBounds()
+    {
+        StartCoroutine(Death());
+    }
+
+    private IEnumerator Death()
+    {
+        cam.Pause(true);
+        death = true;
+        recovery = true;
+        anim.SetTrigger("death");
+        rb.velocity = Vector3.zero;
+
+        yield return new WaitForSeconds(deathDelay);
+        lm.RestartLevel();
     }
 }

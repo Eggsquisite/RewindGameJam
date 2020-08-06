@@ -144,11 +144,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: {x: 1.5, y: 0, z: 0}
-  rotation: {x: 0, y: 0, z: 0}
+  maxAngularVelocity: 0
   recordPositions: 1
   recordRotations: 0
-  rewindVelocity: 10
-  rewindAccel: 2
+  infiniteRotations: 0
 --- !u!114 &952072038
 MonoBehaviour:
   m_ObjectHideFlags: 0

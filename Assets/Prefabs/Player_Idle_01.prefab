@@ -157,6 +157,10 @@ MonoBehaviour:
   platformLayerMask:
     serializedVersion: 2
     m_Bits: 1280
+  rm: {fileID: 0}
+  lm: {fileID: 0}
+  deathDelay: 2
   moveSpeed: 5
   jumpForce: 10
-  rm: {fileID: 0}
+  health: 3
+  recoveryDelay: 2

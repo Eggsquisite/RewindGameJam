@@ -35,6 +35,11 @@ public class CamMovement : MonoBehaviour
         }
     }
 
+    public void Pause(bool status)
+    { 
+        pause = status;
+    }
+
     public void Rewind() {
         EndTrigger.onAction -= Rewind;
         StartCoroutine(EndStart());
@@ -42,9 +47,9 @@ public class CamMovement : MonoBehaviour
 
     private IEnumerator EndStart()
     {
-        pause = true;
+        Pause(true);
         yield return new WaitForSeconds(rewindDelay);
-        pause = false;
+        Pause(false);
         rewindFlag = true;
     }
 }

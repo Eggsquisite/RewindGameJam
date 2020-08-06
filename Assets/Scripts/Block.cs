@@ -70,7 +70,6 @@ public class Block : MonoBehaviour
         if (collision.gameObject.tag == "Player" && !playerEnter)
         {
             originalPos = t.localPosition;
-            Debug.Log("hi");
             playerEnter = true;
         }
     }

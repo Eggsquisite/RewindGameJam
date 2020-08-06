@@ -659,6 +659,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_Idle_01
       objectReference: {fileID: 0}
+    - target: {fileID: 5613546256454360093, guid: bcd33bf33dd36e54c987a7dc9d51edfd,
+        type: 3}
+      propertyPath: lm
+      value: 
+      objectReference: {fileID: 1151542053}
     - target: {fileID: 5613546256454360095, guid: bcd33bf33dd36e54c987a7dc9d51edfd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2285,6 +2290,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy02_Fly_01 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6529579769279640111, guid: d81536a8cddd6f844bc57bb41683dbb5,
+        type: 3}
+      propertyPath: infiniteRotations
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529579769279640111, guid: d81536a8cddd6f844bc57bb41683dbb5,
+        type: 3}
+      propertyPath: recordPositions
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529579769279640111, guid: d81536a8cddd6f844bc57bb41683dbb5,
+        type: 3}
+      propertyPath: maxAngularVelocity
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d81536a8cddd6f844bc57bb41683dbb5, type: 3}
 --- !u!4 &1800738869 stripped
@@ -2309,12 +2329,12 @@ PrefabInstance:
     - target: {fileID: 986451111422998754, guid: d81536a8cddd6f844bc57bb41683dbb5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.4
+      value: -14.59
       objectReference: {fileID: 0}
     - target: {fileID: 986451111422998754, guid: d81536a8cddd6f844bc57bb41683dbb5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.52
+      value: -0.72
       objectReference: {fileID: 0}
     - target: {fileID: 986451111422998754, guid: d81536a8cddd6f844bc57bb41683dbb5,
         type: 3}
@@ -2360,11 +2380,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 986451111422998757, guid: d81536a8cddd6f844bc57bb41683dbb5,
-        type: 3}
-      propertyPath: m_FlipX
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 986451111422998759, guid: d81536a8cddd6f844bc57bb41683dbb5,
         type: 3}

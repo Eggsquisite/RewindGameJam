@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 986451111422998756}
   - component: {fileID: 565175013}
   - component: {fileID: 6529579769279640111}
+  - component: {fileID: 5875003196035359}
   m_Layer: 12
   m_Name: Enemy02_Fly_01
   m_TagString: Untagged
@@ -76,7 +77,7 @@ SpriteRenderer:
   m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: cfc0a09786a35934dbb29a9f63261d6a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 4, y: 4}
@@ -133,8 +134,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: {x: -1, y: 0, z: 0}
-  rotation: {x: 0, y: 0, z: 0}
+  maxAngularVelocity: 0
   recordPositions: 1
   recordRotations: 0
-  rewindVelocity: 10
-  rewindAccel: 2
+  infiniteRotations: 0
+--- !u!114 &5875003196035359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 986451111422998759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8bf61eee616b8c4ab0fa94ac342e28b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
