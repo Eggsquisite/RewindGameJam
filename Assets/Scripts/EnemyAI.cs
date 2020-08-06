@@ -11,9 +11,11 @@ public class EnemyAI : MonoBehaviour
     public float speed = 200f;
     public float nextWaypointDistanceMin = 1f;
     public float nextWayPointDistanceMax = 3f;
+    public float distanceToDetectPlayer = 5f;
 
     Path path;
     int currentWaypoint = 0;
+    bool inRangeOfPlayer = false;
     bool reachedEndOfPath = false;
 
     Seeker seeker;
@@ -30,7 +32,7 @@ public class EnemyAI : MonoBehaviour
 
     void UpdatePath()
     {
-        if (seeker.IsDone())
+        if (seeker.IsDone() && inRangeOfPlayer)
             seeker.StartPath(rb.position, target.position, OnPathComplete);
     }
 
@@ -40,6 +42,19 @@ public class EnemyAI : MonoBehaviour
         {
             path = p;
             currentWaypoint = 0;
+        }
+    }
+
+    private void Update()
+    {
+        float distanceToPlayer = Vector2.Distance(rb.position, target.position);
+        if (distanceToPlayer <= distanceToDetectPlayer && !inRangeOfPlayer)
+        {
+            inRangeOfPlayer = true;
+        }
+        else if (distanceToPlayer > distanceToDetectPlayer && inRangeOfPlayer)
+        {
+            inRangeOfPlayer = false;
         }
     }
 
@@ -63,11 +78,13 @@ public class EnemyAI : MonoBehaviour
 
         rb.AddForce(force);
 
-        float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
-        if (distance < Random.Range(nextWaypointDistanceMin, nextWayPointDistanceMax))
+        float distanceToWaypoint = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
+        if (distanceToWaypoint < Random.Range(nextWaypointDistanceMin, nextWayPointDistanceMax))
         {
             currentWaypoint++;
         }
+
+      
 
         if (rb.velocity.x >= 0.01f)
             transform.localScale = new Vector3(-1f, 1f, 1f);

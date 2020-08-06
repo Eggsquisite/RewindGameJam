@@ -11,7 +11,6 @@ public class Enemy : MonoBehaviour
         if (collision.tag == "Player")
         {
             collision.GetComponent<Player>().Hurt(damage);
-            Debug.Log("hurting");
         }
     }
 }
