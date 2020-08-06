@@ -7,7 +7,6 @@ public class CamMovement : MonoBehaviour
     // This can be used to scroll the map as well
     [SerializeField] float scrollSpeed = 2.0f;
     [SerializeField] float rewindFactor = 1.5f;
-    [SerializeField] float rewindDelay = 1f;
 
     private bool rewindFlag = false;
     private bool pause = false;
@@ -40,15 +39,14 @@ public class CamMovement : MonoBehaviour
         pause = status;
     }
 
-    public void Rewind() {
+    public void Rewind(float delay) {
         EndTrigger.onAction -= Rewind;
-        StartCoroutine(EndStart());
+        Pause(true);
+        Invoke("EndStart", delay);
     }
 
-    private IEnumerator EndStart()
+    private void EndStart()
     {
-        Pause(true);
-        yield return new WaitForSeconds(rewindDelay);
         Pause(false);
         rewindFlag = true;
     }

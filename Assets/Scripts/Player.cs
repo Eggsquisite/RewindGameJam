@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    const float GRAVITY = -1f;
-
     [SerializeField] private LayerMask platformLayerMask;
     public RewindManager rm;
     [SerializeField] LevelManager lm;
@@ -46,7 +44,7 @@ public class Player : MonoBehaviour
 
     // Update is called once per frame
     private void Update() {
-        if (IsGrounded() && Input.GetKeyDown(KeyCode.Space))
+        if (IsGrounded() && Input.GetKeyDown(KeyCode.Space) && !death)
             Jump();
 
         if (!endTrigger)
@@ -144,7 +142,7 @@ public class Player : MonoBehaviour
         rb.velocity = Vector3.zero;
     }
 
-    private void Light()
+    private void Light(float delay)
     {
         if (!endTrigger)
         {

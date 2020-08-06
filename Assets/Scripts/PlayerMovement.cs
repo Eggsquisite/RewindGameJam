@@ -135,7 +135,7 @@ public class PlayerMovement : MonoBehaviour {
         rb.AddForce(rb.mass*angularVel*angularVel*r, ForceMode2D.Impulse);
     }
 
-    private void Light()
+    private void Light(float delay)
     {
         if (!endTrigger)
         {

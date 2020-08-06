@@ -7,8 +7,9 @@ public class EndTrigger : MonoBehaviour
 {
     [SerializeField] GameObject goal = null;
     [SerializeField] GameObject endText = null;
+    [SerializeField] float delay = 2f;
 
-    public delegate void TriggerAction();
+    public delegate void TriggerAction(float delay);
     public static event TriggerAction onAction;
 
     GameObject cam;
@@ -39,7 +40,7 @@ public class EndTrigger : MonoBehaviour
     {
         if (inRange && Input.GetKeyDown(KeyCode.E))
         { 
-            onAction();
+            onAction(delay);
             Debug.Log("E pressed");        
         }
     }
@@ -65,7 +66,7 @@ public class EndTrigger : MonoBehaviour
         }
     }
 
-    private void BeginRewind()
+    private void BeginRewind(float delay)
     {
         StartCoroutine(LightUp());
         goal.SetActive(true);
