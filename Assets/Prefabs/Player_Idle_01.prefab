@@ -118,7 +118,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 3
-  m_Material: {fileID: 6200000, guid: c7a61342caa954742b70e7715f3e13c6, type: 2}
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -159,9 +159,9 @@ MonoBehaviour:
     m_Bits: 1280
   interactiveLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
   deathDelay: 2
-  maxSpeed: 10
-  jumpForce: 10
+  maxSpeed: 5
+  jumpForce: 600
   health: 3
   recoveryDelay: 2

@@ -127,7 +127,7 @@ public class Player : MonoBehaviour
     }
     
     private bool IsOnProjectile() {
-        float extraHeightText = .1f;
+        float extraHeightText = .2f;
         RaycastHit2D hit = Physics2D.Raycast(feet.bounds.center, Vector2.down, feet.bounds.extents.y + extraHeightText, interactiveLayer);
         if (hit.collider != null) {
             projectileGO = hit.transform.gameObject;
