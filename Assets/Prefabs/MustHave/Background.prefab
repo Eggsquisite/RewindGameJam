@@ -97,4 +97,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeToColorAmount: 0.15
   transitionSpeed: 0.4
-  delay: 1

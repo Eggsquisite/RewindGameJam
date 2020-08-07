@@ -8,11 +8,11 @@ public class EndTrigger : MonoBehaviour
     public delegate void TriggerAction(float delay);
     public static event TriggerAction onAction;
 
-    [SerializeField] GameObject goal = null;
     [SerializeField] GameObject endText = null;
     [SerializeField] float delay = 2f;
 
     GameObject cam;
+    GameObject goal;
     Animator anim;
     bool inRange = false;
 
@@ -29,11 +29,13 @@ public class EndTrigger : MonoBehaviour
     private void OnEnable()
     {
         onAction += BeginRewind;
+        Goal.acquireGoal += AcquireGoal;
     }
 
     private void OnDisable()
     {
         onAction -= BeginRewind;
+        Goal.acquireGoal -= AcquireGoal;
     }
 
     private void Update()
@@ -78,5 +80,10 @@ public class EndTrigger : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         anim.SetBool("lit", true);
+    }
+
+    private void AcquireGoal(GameObject g)
+    {
+        goal = g;
     }
 }

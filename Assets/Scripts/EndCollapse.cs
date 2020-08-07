@@ -59,6 +59,7 @@ public class EndCollapse : MonoBehaviour
     {
         if (!endTrigger)
         {
+            Debug.Log("starting collapse");
             Invoke("Begin", delay);
             endTrigger = true;
         }

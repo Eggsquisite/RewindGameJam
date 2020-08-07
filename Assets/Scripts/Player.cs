@@ -31,7 +31,6 @@ public class Player : MonoBehaviour
     private GameObject projectileGO;
 
     float horizontalInput;
-    float gravityScale;
     bool endTrigger = false;
     bool invincible = false;
     bool recovery = false;
@@ -50,8 +49,9 @@ public class Player : MonoBehaviour
         feet = GetComponent<Collider2D>();
         anim = GetComponent<Animator>();
         sp = GetComponent<SpriteRenderer>();
-        gravityScale = rb.gravityScale;
-        if (playerTarget != null)   playerTarget(this.transform);
+
+        //sp.enabled = false;
+        playerTarget?.Invoke(this.transform);
     }
 
     private void OnEnable()
@@ -67,7 +67,6 @@ public class Player : MonoBehaviour
 
     // Check ALL keystrokes here
     private void Update() {
-
         // disallows player movement when spawning in or dying
         if (!death && !spawning) 
             horizontalInput = Input.GetAxis("Horizontal");
@@ -75,6 +74,7 @@ public class Player : MonoBehaviour
        // disallows player jumping when dying
         if (IsGrounded() && Input.GetKeyDown(KeyCode.Space) && !death && !spawning)
             jumpBool = true;
+
 
         /*if (!endTrigger)
             CheckRewindInput();*/
@@ -226,6 +226,7 @@ public class Player : MonoBehaviour
         death = true;
         recovery = true;
         anim.SetTrigger("death");
+        Debug.Log("death");
         rb.velocity = Vector3.zero;
 
         yield return new WaitForSeconds(deathDelay);
