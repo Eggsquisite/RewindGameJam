@@ -9,6 +9,13 @@ public class CamMovement : MonoBehaviour
     [SerializeField] float rewindFactor = 1.5f;
     [SerializeField] float smoothSpeed = 1f;
 
+    [Header("Clamp Values")]
+    [SerializeField] float min_X = 0f;
+    [SerializeField] float max_X = 5f;
+    [SerializeField] float min_Y = 0f;
+    [SerializeField] float max_Y = 10f;
+
+
     private Transform target;
     private bool rewindFlag = false;
     private bool pause = false;
@@ -40,8 +47,8 @@ public class CamMovement : MonoBehaviour
             if (target == null)
                 return; 
 
-            Vector3 yes = new Vector3(transform.position.x, target.position.y, transform.position.z);
-            transform.position = Vector3.MoveTowards(transform.position, yes, smoothSpeed * Time.deltaTime); 
+            Vector3 yes = new Vector3(target.position.x, target.position.y, transform.position.z);
+            transform.position = Vector3.MoveTowards(transform.position, yes, smoothSpeed * Time.deltaTime);
         }
     }
 

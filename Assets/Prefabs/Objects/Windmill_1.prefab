@@ -182,7 +182,7 @@ MonoBehaviour:
   maxSpeed: 1
   waitTime: 2
   recordPositions: 0
-  maxAngularVelocity: 0.1
+  maxAngularVelocity: 0.125
   recordRotations: 0
 --- !u!1 &5995486251418544673
 GameObject:

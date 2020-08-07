@@ -10,7 +10,7 @@ public class CamClamp : MonoBehaviour
     [SerializeField] float max_Y = 10f;
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         transform.position = new Vector3(
             Mathf.Clamp(transform.position.x, min_X, max_X),
