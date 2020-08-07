@@ -51,7 +51,7 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
         sp = GetComponent<SpriteRenderer>();
         gravityScale = rb.gravityScale;
-        //playerTarget(this.transform);
+        if (playerTarget != null)   playerTarget(this.transform);
     }
 
     private void OnEnable()
@@ -67,12 +67,13 @@ public class Player : MonoBehaviour
 
     // Check ALL keystrokes here
     private void Update() {
-        horizontalInput = Input.GetAxis("Horizontal");
 
-        if (death || spawning) { }
+        // disallows player movement when spawning in or dying
+        if (!death && !spawning) 
+            horizontalInput = Input.GetAxis("Horizontal");
 
-       
-        if (IsGrounded() && Input.GetKeyDown(KeyCode.Space))
+       // disallows player jumping when dying
+        if (IsGrounded() && Input.GetKeyDown(KeyCode.Space) && !death && !spawning)
             jumpBool = true;
 
         /*if (!endTrigger)
@@ -84,8 +85,6 @@ public class Player : MonoBehaviour
 
     
     private void FixedUpdate() {
-        if (RewindManager.IsRewinding() || death || spawning) { }
-
         Move();
         if (RewindManager.IsRewinding() && IsOnProjectile()) AddProjectileForce();
     }
@@ -113,7 +112,7 @@ public class Player : MonoBehaviour
     }
 
     private bool IsGrounded() {
-        RaycastHit2D raycastHit = Physics2D.Raycast(feet.bounds.center, Vector2.down, feet.bounds.extents.y + 0.1f, platformLayerMask);
+        RaycastHit2D raycastHit = Physics2D.Raycast(feet.bounds.center, Vector2.down, feet.bounds.extents.y + 0.2f, platformLayerMask);
         if (raycastHit.collider != null) isGrounded = true;
         else isGrounded = false;
         anim.SetBool("jump", !isGrounded);
@@ -121,7 +120,7 @@ public class Player : MonoBehaviour
     }
     
     private bool IsOnProjectile() {
-        float extraHeightText = .1f;
+        float extraHeightText = .2f;
         RaycastHit2D hit = Physics2D.Raycast(feet.bounds.center, Vector2.down, feet.bounds.extents.y + extraHeightText, interactiveLayer);
         if (hit.collider != null) {
             projectileGO = hit.transform.gameObject;

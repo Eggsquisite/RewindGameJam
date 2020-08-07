@@ -162,8 +162,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   deathDelay: 2
-  maxSpeed: 10
-  jumpForce: 800
+  maxSpeed: 5
+  jumpForce: 600
   health: 3
   recoveryDelay: 2
 --- !u!114 &1320009116
@@ -184,5 +184,5 @@ MonoBehaviour:
   interactiveLayer:
     serializedVersion: 2
     m_Bits: 1024
-  maxSpeed: 10
-  jumpForce: 800
+  maxSpeed: 5
+  jumpForce: 600
