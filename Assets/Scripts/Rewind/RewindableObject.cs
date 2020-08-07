@@ -55,7 +55,9 @@ public class RecordedRotations {
     }
     
     public Quaternion RewindBy(int amount) {
-        if ((pos - amount) >= 0) pos -= amount;
+        //Debug.Log(pos + "   " + amount);
+        if ((pos - 1 - amount) >= 0) pos -= (amount+1);
+        //Debug.Log(pos);
         return recordedRotation[pos];
     }
 }

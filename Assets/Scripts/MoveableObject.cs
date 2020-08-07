@@ -14,9 +14,9 @@ public class MoveableObject : MonoBehaviour {
 
     private float angularVelocity;
     private float timer, timer2;
-    private float tol = 0.05f;
+    private float tol = 0.08f;
     private bool holdAndWait = false;
-    private bool firstTimeRewinding = true;
+    private bool prepareToRewind = true;
     private float waitTimeReverse;
     private RewindableObject ro;
     private Vector2 moveDirection;
@@ -35,25 +35,28 @@ public class MoveableObject : MonoBehaviour {
             }
             else {
                 if (enableAutoMovement) {
-                    if (firstTimeRewinding) {
+                    if (prepareToRewind) {
                         if (holdAndWait) { //if we are in the middle of the timer
                             timer = waitTime - timer; //flip the timer
                             timer /= RewindManager.GetMaxRewindRate(); //scale to the max rewind rate
                         }
-                        Flip();
-                        firstTimeRewinding = false;
+                        else Flip(); //always flip when first rewinding
+                        prepareToRewind = false;
+                        
                     }
 
                     if (holdAndWait) {
                         timer += Time.fixedDeltaTime * RewindManager.GetRewindRate();
-                        if (timer >= waitTimeReverse) holdAndWait = false;
+                        if (timer >= waitTimeReverse) {
+                            holdAndWait = false;
+                            Flip();
+                        }
                     }
                     else {
                         transform.Translate(Time.fixedDeltaTime * RewindManager.GetRewindRate() * moveDirection, Space.World);
                         if (((Vector2)(transform.position) - position2).magnitude <= tol) {
                             holdAndWait = true;
                             timer = 0f;
-                            Flip();
                         }
                     }
                 }
@@ -69,11 +72,21 @@ public class MoveableObject : MonoBehaviour {
         }
         else {
             if (enableAutoMovement) {
-                firstTimeRewinding = true; //need to reset this variable here
+                if (!prepareToRewind) {
+                    prepareToRewind = true; //need to reset this variable here
+                    if (holdAndWait) {
+                        //convert remaining seconds back to normal
+                        timer *= RewindManager.GetMaxRewindRate();
+                        timer = waitTime - timer;
+                    }
+                    else Flip(); //always flip after finishing rewinding
+                }
+                
                 if (holdAndWait) {
                     timer += Time.fixedDeltaTime;
                     if (timer >= waitTime) {
                         holdAndWait = false;
+                        Flip();
                     }
                 }
                 else {
@@ -82,7 +95,6 @@ public class MoveableObject : MonoBehaviour {
                     if (((Vector2) transform.position - position2).magnitude <= tol) {
                         holdAndWait = true;
                         timer = 0f;
-                        Flip();
                     }
                 }
             }
