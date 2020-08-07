@@ -51,7 +51,7 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
         sp = GetComponent<SpriteRenderer>();
         gravityScale = rb.gravityScale;
-        if (playerTarget != null)   playerTarget(this.transform);
+        playerTarget?.Invoke(this.transform);
     }
 
     private void OnEnable()

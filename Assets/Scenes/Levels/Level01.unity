@@ -3223,10 +3223,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5995486250911475218, guid: d9894d22989b9ba4dbed00a2b60263b7,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5995486251418544673, guid: d9894d22989b9ba4dbed00a2b60263b7,
         type: 3}
       propertyPath: m_Name
       value: Windmill
+      objectReference: {fileID: 0}
+    - target: {fileID: 5995486251418544673, guid: d9894d22989b9ba4dbed00a2b60263b7,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5995486251418544675, guid: d9894d22989b9ba4dbed00a2b60263b7,
         type: 3}
