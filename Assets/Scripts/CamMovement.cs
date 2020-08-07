@@ -37,6 +37,9 @@ public class CamMovement : MonoBehaviour
             else
                 transform.Translate(Vector3.right * Time.deltaTime * scrollSpeed);
 
+            if (target == null)
+                return; 
+
             Vector3 yes = new Vector3(transform.position.x, target.position.y, transform.position.z);
             transform.position = Vector3.MoveTowards(transform.position, yes, smoothSpeed * Time.deltaTime); 
         }
