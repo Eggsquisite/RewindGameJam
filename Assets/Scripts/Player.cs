@@ -67,7 +67,6 @@ public class Player : MonoBehaviour
 
     // Check ALL keystrokes here
     private void Update() {
-
         // disallows player movement when spawning in or dying
         if (!death && !spawning) 
             horizontalInput = Input.GetAxis("Horizontal");
@@ -75,6 +74,7 @@ public class Player : MonoBehaviour
        // disallows player jumping when dying
         if (IsGrounded() && Input.GetKeyDown(KeyCode.Space) && !death && !spawning)
             jumpBool = true;
+
 
         /*if (!endTrigger)
             CheckRewindInput();*/

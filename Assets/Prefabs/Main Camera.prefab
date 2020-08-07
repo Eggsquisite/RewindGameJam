@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 154942752}
   - component: {fileID: 154942753}
   - component: {fileID: 797831854}
-  m_Layer: 8
+  m_Layer: 14
   m_Name: RightWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 299341435}
   - component: {fileID: 299341436}
   - component: {fileID: 1150145245}
-  m_Layer: 8
+  m_Layer: 14
   m_Name: LeftWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -164,7 +164,7 @@ GameObject:
   m_Component:
   - component: {fileID: 897161887}
   - component: {fileID: 897161888}
-  - component: {fileID: 4255618874562555353}
+  - component: {fileID: 897161889}
   m_Layer: 12
   m_Name: RightKill
   m_TagString: Untagged
@@ -212,7 +212,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 24}
   m_EdgeRadius: 0
---- !u!114 &4255618874562555353
+--- !u!114 &897161889
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -221,10 +221,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 897161886}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8bf61eee616b8c4ab0fa94ac342e28b, type: 3}
+  m_Script: {fileID: 11500000, guid: b64ef07e6ab05a0479778a12542ef5ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 999
 --- !u!1 &1360170894
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,7 +234,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1360170895}
   - component: {fileID: 1360170896}
-  - component: {fileID: 3863821546255644746}
+  - component: {fileID: 1360170897}
   m_Layer: 12
   m_Name: LeftKill
   m_TagString: Untagged
@@ -283,7 +282,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 24}
   m_EdgeRadius: 0
---- !u!114 &3863821546255644746
+--- !u!114 &1360170897
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -292,10 +291,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1360170894}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8bf61eee616b8c4ab0fa94ac342e28b, type: 3}
+  m_Script: {fileID: 11500000, guid: b64ef07e6ab05a0479778a12542ef5ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 999
 --- !u!1 &1472878109
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,7 +339,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.45588493}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -352,7 +350,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 36, y: 1}
+  m_Size: {x: 36, y: 1.7209816}
   m_EdgeRadius: 0
 --- !u!114 &1472878111
 MonoBehaviour:
@@ -363,10 +361,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1472878109}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8bf61eee616b8c4ab0fa94ac342e28b, type: 3}
+  m_Script: {fileID: 11500000, guid: b64ef07e6ab05a0479778a12542ef5ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 999
 --- !u!1 &8539759738252415603
 GameObject:
   m_ObjectHideFlags: 0
