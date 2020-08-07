@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3843071135266253011}
   - component: {fileID: 3843071135266253010}
-  - component: {fileID: 3843071135266253009}
+  - component: {fileID: 6864976350288143948}
   - component: {fileID: 3843071135266253012}
+  - component: {fileID: 6864976350288143947}
   m_Layer: 10
   m_Name: Spoke
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3843071135266253008}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalPosition: {x: 0, y: 2.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3843071136585395175}
@@ -85,25 +86,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3843071135266253009
-MonoBehaviour:
+--- !u!50 &6864976350288143948
+Rigidbody2D:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3843071135266253008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1347817507220a4384f3ff6f7c24546, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveUnitsPerSecond:
-    value: {x: 0, y: 0, z: 0}
-    space: 1
-  rotateDegreesPerSecond:
-    value: {x: 0, y: 0, z: -50}
-    space: 1
-  ignoreTimescale: 0
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 2000
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 3
 --- !u!60 &3843071135266253012
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -159,6 +162,26 @@ PolygonCollider2D:
       - {x: 2.4549813, y: 2.3617487}
     - - {x: 0, y: 0}
       - {x: 0, y: 0}
+--- !u!114 &6864976350288143947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3843071135266253008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 775dee7525a42f24690f882533ac7bac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enableAutoMovement: 0
+  position1: {x: 0, y: 0}
+  position2: {x: 0, y: 0}
+  maxSpeed: 1
+  waitTime: 2
+  recordPositions: 0
+  maxAngularVelocity: 0.25
+  recordRotations: 0
 --- !u!1 &3843071136585395173
 GameObject:
   m_ObjectHideFlags: 0

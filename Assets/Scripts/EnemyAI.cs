@@ -44,9 +44,7 @@ public class EnemyAI : MonoBehaviour
 
     void AcquirePlayer(Transform player)
     {
-        Debug.Log("this event doesn't work yet");
         target = player;
-        Debug.Log(target);
     }
 
     void UpdatePath()

@@ -31,7 +31,6 @@ public class Player : MonoBehaviour
     private GameObject projectileGO;
 
     float horizontalInput;
-    float gravityScale;
     bool endTrigger = false;
     bool invincible = false;
     bool recovery = false;
@@ -50,7 +49,8 @@ public class Player : MonoBehaviour
         feet = GetComponent<Collider2D>();
         anim = GetComponent<Animator>();
         sp = GetComponent<SpriteRenderer>();
-        gravityScale = rb.gravityScale;
+
+        sp.enabled = false;
         playerTarget?.Invoke(this.transform);
     }
 
@@ -226,6 +226,7 @@ public class Player : MonoBehaviour
         death = true;
         recovery = true;
         anim.SetTrigger("death");
+        Debug.Log("death");
         rb.velocity = Vector3.zero;
 
         yield return new WaitForSeconds(deathDelay);

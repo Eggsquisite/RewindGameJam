@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5995486250911475220}
   - component: {fileID: 5995486250911475221}
-  - component: {fileID: 5995486250911475223}
+  - component: {fileID: 512580260}
   - component: {fileID: 2028873188}
+  - component: {fileID: 512580261}
   m_Layer: 10
   m_Name: Spoke
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5995486250911475218}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalPosition: {x: 0, y: 2.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5995486251418544675}
@@ -72,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -4069263951439049202, guid: d760c5804e5b9ac43b931383e4eba2e3,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -85,25 +86,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5995486250911475223
-MonoBehaviour:
+--- !u!50 &512580260
+Rigidbody2D:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5995486250911475218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1347817507220a4384f3ff6f7c24546, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveUnitsPerSecond:
-    value: {x: 0, y: 0, z: 0}
-    space: 1
-  rotateDegreesPerSecond:
-    value: {x: 0, y: 0, z: 50}
-    space: 1
-  ignoreTimescale: 0
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 2000
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 3
 --- !u!60 &2028873188
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -131,16 +134,16 @@ PolygonCollider2D:
     m_Paths:
     - - {x: 2.5008738, y: 2.5064683}
       - {x: 2.379838, y: 2.5012598}
-      - {x: 0.3449037, y: 0.4439633}
+      - {x: 0.32186568, y: 0.4670012}
       - {x: 0.17246753, y: 0.5541754}
       - {x: -0.014944464, y: 0.58243537}
-      - {x: -0.34294415, y: 0.47322583}
+      - {x: -0.35062295, y: 0.49626374}
       - {x: -2.1689606, y: 2.317752}
       - {x: -2.3617806, y: 2.5150547}
       - {x: -2.5003061, y: 2.5161414}
       - {x: -2.509284, y: 2.405642}
       - {x: -2.3172414, y: 2.1981955}
-      - {x: -0.43238235, y: 0.33466125}
+      - {x: -0.47077915, y: 0.34234047}
       - {x: -0.5595135, y: 0.012019873}
       - {x: -0.4517898, y: -0.30592632}
       - {x: -2.3607447, y: -2.227994}
@@ -161,6 +164,26 @@ PolygonCollider2D:
       - {x: 2.5075543, y: 2.4024725}
     - - {x: 0, y: 0}
       - {x: 0, y: 0}
+--- !u!114 &512580261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5995486250911475218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 775dee7525a42f24690f882533ac7bac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enableAutoMovement: 0
+  position1: {x: 0, y: 0}
+  position2: {x: 0, y: 0}
+  maxSpeed: 1
+  waitTime: 2
+  recordPositions: 0
+  maxAngularVelocity: 0.15
+  recordRotations: 0
 --- !u!1 &5995486251418544673
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,7 +17,7 @@ public class LevelManager : MonoBehaviour
         Goal.loadLevel -= LoadNextLevel;
     }
 
-    public void LoadNextLevel()
+    public void LoadNextLevel(GameObject g)
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
