@@ -42,12 +42,12 @@ public class PlayerMovement : MonoBehaviour {
     //Do ALL Physics and movement stuff here
     private void FixedUpdate() {
         Move();
-        if (RewindManager.isRewinding && IsOnProjectile()) AddProjectileForce();
+        if (RewindManager.IsRewinding() && IsOnProjectile()) AddProjectileForce();
     }
 
     public void CheckRewindInput() {
-        if (Input.GetKeyDown(KeyCode.LeftShift)) RewindManager.isRewinding = true;
-        else if (Input.GetKeyUp(KeyCode.LeftShift)) RewindManager.isRewinding = false;
+        if (Input.GetKeyDown(KeyCode.LeftShift)) RewindManager.EnableRewind();
+        else if (Input.GetKeyUp(KeyCode.LeftShift)) RewindManager.DisableRewind();
     }
 
     private bool IsGrounded() {

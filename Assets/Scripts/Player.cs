@@ -34,7 +34,6 @@ public class Player : MonoBehaviour
     float gravityScale;
     bool endTrigger = false;
     bool invincible = false;
-    bool rewinding = false;
     bool recovery = false;
     bool spawning = false;
     bool death = false;
@@ -44,7 +43,7 @@ public class Player : MonoBehaviour
     private bool isGrounded = false;
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         cam = Camera.main.GetComponent<CamMovement>();
         rb = GetComponent<Rigidbody2D>();
@@ -52,7 +51,7 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
         sp = GetComponent<SpriteRenderer>();
         gravityScale = rb.gravityScale;
-        playerTarget(this.transform);
+        //playerTarget(this.transform);
     }
 
     private void OnEnable()
@@ -69,9 +68,9 @@ public class Player : MonoBehaviour
     // Check ALL keystrokes here
     private void Update() {
         horizontalInput = Input.GetAxis("Horizontal");
-        
-        if (death || spawning)
-            return;
+
+        if (death || spawning) { }
+
        
         if (IsGrounded() && Input.GetKeyDown(KeyCode.Space))
             jumpBool = true;
@@ -79,27 +78,24 @@ public class Player : MonoBehaviour
         if (!endTrigger)
             CheckRewindInput();
 
-        if (RewindManager.isRewinding)
-            Stasis();
+        //if (RewindManager.isRewinding)
+        //    Stasis();
     }
 
     
     private void FixedUpdate() {
-        if (rewinding || death || spawning)
-            return; 
+        if (RewindManager.IsRewinding() || death || spawning) { }
 
         Move();
-        if (RewindManager.isRewinding && IsOnProjectile()) AddProjectileForce();
+        if (RewindManager.IsRewinding() && IsOnProjectile()) AddProjectileForce();
     }
 
     public void CheckRewindInput() {
         if (Input.GetKeyDown(KeyCode.LeftShift)) {
-            RewindManager.isRewinding = true;
-            rewinding = true;
+            RewindManager.EnableRewind();
         }
         else if (Input.GetKeyUp(KeyCode.LeftShift)) {
-            RewindManager.isRewinding = false;
-            rewinding = false;
+            RewindManager.DisableRewind();
             rb.gravityScale = gravityScale;
         }
     }
@@ -168,7 +164,7 @@ public class Player : MonoBehaviour
         //Debug.Log(transform.position + "    " + projectileGO.transform.position + "    " + r);
         rb.AddForce(rb.mass * angularVel * angularVel * r * 60f); //centrifugal
         rb.AddForce(rb.mass * angularVel * angularVel * r2 * 50f); //orthogonal (CW direction)
-        //Debug.Log(rb.mass * angularVel * angularVel * r);
+        Debug.Log("Adding Projectile Force");
     }
 
     private void Stasis()
