@@ -76,8 +76,8 @@ public class Player : MonoBehaviour
         if (IsGrounded() && Input.GetKeyDown(KeyCode.Space) && !death && !spawning)
             jumpBool = true;
 
-        if (!endTrigger)
-            CheckRewindInput();
+        /*if (!endTrigger)
+            CheckRewindInput();*/
 
         //if (RewindManager.isRewinding)
         //    Stasis();
@@ -89,7 +89,7 @@ public class Player : MonoBehaviour
         if (RewindManager.IsRewinding() && IsOnProjectile()) AddProjectileForce();
     }
 
-    public void CheckRewindInput() {
+    /*public void CheckRewindInput() {
         if (Input.GetKeyDown(KeyCode.LeftShift)) {
             RewindManager.EnableRewind();
         }
@@ -97,7 +97,7 @@ public class Player : MonoBehaviour
             RewindManager.DisableRewind();
             rb.gravityScale = gravityScale;
         }
-    }
+    }*/
 
     private void Spawn(float delay)
     {
