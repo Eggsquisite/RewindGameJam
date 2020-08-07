@@ -13,11 +13,11 @@ public class RewindMusic : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-        if (RewindManager.isRewinding && !trigger) {
+        if (RewindManager.IsRewinding() && !trigger) {
             trigger = true;
             GetComponent<AudioSource>().pitch = -1f;
         }
-        else if (!RewindManager.isRewinding && trigger) {
+        else if (!RewindManager.IsRewinding() && trigger) {
             trigger = false;
             GetComponent<AudioSource>().pitch = 1f;
         }
