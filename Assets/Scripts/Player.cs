@@ -50,7 +50,7 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
         sp = GetComponent<SpriteRenderer>();
 
-        //sp.enabled = false;
+        sp.enabled = false;
         playerTarget?.Invoke(this.transform);
     }
 
