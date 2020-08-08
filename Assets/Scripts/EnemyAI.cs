@@ -49,7 +49,7 @@ public class EnemyAI : MonoBehaviour
 
     void UpdatePath()
     {
-        if (seeker.IsDone() && inRangeOfPlayer)
+        if (seeker.IsDone() && inRangeOfPlayer && EndTrigger.backtrackBegin)
             seeker.StartPath(rb.position, target.position, OnPathComplete);
     }
 

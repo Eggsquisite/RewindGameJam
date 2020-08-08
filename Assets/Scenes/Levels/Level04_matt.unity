@@ -3122,7 +3122,7 @@ PrefabInstance:
     - target: {fileID: 8539759738252415607, guid: f5433b7600e7a954cae14b6ffe30379d,
         type: 3}
       propertyPath: scrollSpeed
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8539759738252415607, guid: f5433b7600e7a954cae14b6ffe30379d,
         type: 3}

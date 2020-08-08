@@ -8,8 +8,8 @@ public class EndTrigger : MonoBehaviour
     public delegate void TriggerAction(float delay);
     public static event TriggerAction onAction;
     public static int torchNum = 0;
+    public static bool backtrackBegin = false;
 
-    [SerializeField] GameObject endText = null;
     [SerializeField] float delay = 2f;
 
     GameObject cam;
@@ -80,6 +80,7 @@ public class EndTrigger : MonoBehaviour
 
     private void BeginRewind(float delay)
     {
+        Invoke("SetBacktrack", delay);
         StartCoroutine(LightUp());
         goal.SetActive(true);
         goal.GetComponent<Collider2D>().enabled = true;
@@ -88,8 +89,13 @@ public class EndTrigger : MonoBehaviour
 
     private IEnumerator LightUp()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.75f);
         anim.SetBool("lit", true);
+    }
+
+    private void SetBacktrack()
+    {
+        backtrackBegin = true;
     }
 
     private void AcquireGoal(GameObject g)
