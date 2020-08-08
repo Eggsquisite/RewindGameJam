@@ -133,7 +133,7 @@ public class Player : MonoBehaviour
         if (inAir && IsGrounded()) { //check for ground every frame while airborn
             anim.SetBool("jump", false);
             inAir = false;
-            //Debug.Log("We hit the ground");
+            Debug.Log("We hit the ground");
         }
 
         if (jumpBool && IsGrounded()) {
@@ -141,7 +141,7 @@ public class Player : MonoBehaviour
             anim.SetBool("jump", true);
             jumpBool = false;
             inAir = true;
-            //Debug.Log("We jumped");
+            Debug.Log("We jumped");
         }
         else jumpBool = false;
 
