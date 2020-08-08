@@ -6,6 +6,7 @@ public class EnableOnEndTrigger : MonoBehaviour
 {
     SpriteRenderer sp = null;
     Collider2D coll = null;
+    ParticleSystem ps = null;
 
     private void OnEnable()
     {
@@ -22,6 +23,7 @@ public class EnableOnEndTrigger : MonoBehaviour
     {
         if (sp == null) sp = GetComponent<SpriteRenderer>();
         if (coll == null) coll = GetComponent<Collider2D>();
+        if (ps == null) ps = GetComponent<ParticleSystem>();
 
         EnableGameObject(false);
     }
@@ -37,6 +39,7 @@ public class EnableOnEndTrigger : MonoBehaviour
         if (!gameObject.activeSelf) gameObject.SetActive(true);
         if (sp != null) sp.enabled = status;
         if (coll != null) coll.enabled = status;
+        if (ps != null) ps.enableEmission = status;
     }
 
 }
