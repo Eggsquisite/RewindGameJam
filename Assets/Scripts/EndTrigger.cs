@@ -23,6 +23,7 @@ public class EndTrigger : MonoBehaviour
     void Start()
     {
         backtrackBegin = false;
+        Debug.Log("torchNum: " + torchNum);
 
         if (cam == null)
             cam = Camera.main.gameObject;
@@ -91,7 +92,7 @@ public class EndTrigger : MonoBehaviour
 
     private IEnumerator LightUp()
     {
-        yield return new WaitForSeconds(.75f);
+        yield return new WaitForSeconds(.65f);
         anim.SetBool("lit", true);
     }
 

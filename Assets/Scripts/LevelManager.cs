@@ -24,6 +24,7 @@ public class LevelManager : MonoBehaviour
 
     public void RestartLevel()
     {
+        Torch.firstTorch = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

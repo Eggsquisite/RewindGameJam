@@ -31,11 +31,6 @@ public class Block : MonoBehaviour
             anim = GetComponent<Animator>();
     }
 
-    void OnEnable()
-    {
-        
-    }
-
     void Update()
     {
         if (playerEnter)
@@ -67,7 +62,7 @@ public class Block : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player" && !playerEnter)
+        if (collision.gameObject.tag == "Player" && !playerEnter && EndTrigger.backtrackBegin)
         {
             originalPos = t.localPosition;
             playerEnter = true;

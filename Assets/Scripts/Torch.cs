@@ -7,11 +7,19 @@ public class Torch : MonoBehaviour
     public delegate void TorchTriggered();
     public static event TorchTriggered onTrigger;
 
+    public static bool firstTorch = true;
     Animator anim;
 
-    private void Awake()
+    private void OnEnable()
     {
         anim = GetComponent<Animator>();
+        if (firstTorch && EndTrigger.torchNum > 0)
+        {
+            EndTrigger.torchNum = 0;
+            firstTorch = false;
+        }
+
+        Debug.Log("adding torch");
         EndTrigger.torchNum += 1;
     }
 
