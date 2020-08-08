@@ -7,6 +7,7 @@ public class EndTrigger : MonoBehaviour
 {
     public delegate void TriggerAction(float delay);
     public static event TriggerAction onAction;
+    public static int torchNum = 0;
 
     [SerializeField] GameObject endText = null;
     [SerializeField] float delay = 2f;
@@ -14,7 +15,9 @@ public class EndTrigger : MonoBehaviour
     GameObject cam;
     GameObject goal;
     Animator anim;
+    int torches;
     bool inRange = false;
+    bool endReady = false;
 
     // Start is called before the first frame update
     void Start()
@@ -30,20 +33,21 @@ public class EndTrigger : MonoBehaviour
     {
         onAction += BeginRewind;
         Goal.acquireGoal += AcquireGoal;
+        Torch.onTrigger += TorchLit;
     }
 
     private void OnDisable()
     {
         onAction -= BeginRewind;
         Goal.acquireGoal -= AcquireGoal;
+        Torch.onTrigger -= TorchLit;
     }
 
     private void Update()
     {
-        if (inRange && Input.GetKeyDown(KeyCode.E))
-        { 
-            if (onAction != null)
-                onAction(delay);
+        if (Input.GetKeyDown(KeyCode.E) && inRange && endReady)
+        {
+            onAction?.Invoke(delay);
         }
     }
 
@@ -85,5 +89,17 @@ public class EndTrigger : MonoBehaviour
     private void AcquireGoal(GameObject g)
     {
         goal = g;
+    }
+
+    private void TorchLit()
+    {
+        torches++;
+
+        if (torches >= torchNum)
+        {
+            Debug.Log("all torches lit");
+            endReady = true;
+            anim.SetTrigger("ready");
+        }
     }
 }
