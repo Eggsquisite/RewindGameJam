@@ -15,6 +15,7 @@ public class RewindManager : MonoBehaviour {
     private static float maxRewindTime = 3f;
     private static float maxRewindTimer;
     private static AudioSource rewindFX;
+    public static bool rewindDisabledForever = false;
 
     public void Start() {
         rewindFX = GameObject.Find("Rewind Effect").GetComponent<AudioSource>();
@@ -30,7 +31,8 @@ public class RewindManager : MonoBehaviour {
     }
 
     public static bool IsRewinding() {
-        return isRewinding;
+        if (!rewindDisabledForever) return isRewinding;
+        else return false;
     }
 
     public static void EnableRewind() {
@@ -47,6 +49,9 @@ public class RewindManager : MonoBehaviour {
         rewindFX.SetScheduledEndTime(0.5);
     }
 
+    public void DisableForever() {
+        gameObject.SetActive(false);
+    }
     private void Update() {
         if (Input.GetKeyDown(KeyCode.LeftShift)) EnableRewind();
         else if (Input.GetKeyUp(KeyCode.LeftShift)) DisableRewind();

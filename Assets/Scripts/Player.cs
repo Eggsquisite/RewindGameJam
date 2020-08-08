@@ -163,7 +163,7 @@ public class Player : MonoBehaviour
         //Debug.Log(transform.position + "    " + projectileGO.transform.position + "    " + r);
         rb.AddForce(rb.mass * angularVel * angularVel * r * 60f); //centrifugal
         rb.AddForce(rb.mass * angularVel * angularVel * r2 * 50f); //orthogonal (CW direction)
-        Debug.Log("Adding Projectile Force");
+        //Debug.Log("Adding Projectile Force");
     }
 
     private void Stasis()
