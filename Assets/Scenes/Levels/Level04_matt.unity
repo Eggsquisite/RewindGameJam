@@ -233,7 +233,7 @@ Transform:
   - {fileID: 1653358090}
   - {fileID: 1220225203}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &43539896 stripped
 Transform:
@@ -384,6 +384,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 747041581}
     m_Modifications:
+    - target: {fileID: 4068254234805531015, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4068254235375940017, guid: c7c0df58607c5494ca073dd820ec4504,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -443,6 +448,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fireball (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068254235375940022, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068254235779891422, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7c0df58607c5494ca073dd820ec4504, type: 3}
@@ -828,7 +843,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &295503740 stripped
 Transform:
@@ -1161,7 +1176,7 @@ PrefabInstance:
     - target: {fileID: 4855511982546154933, guid: 1d07ce97a41cd564282f06c4257920aa,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 4855511982546154933, guid: 1d07ce97a41cd564282f06c4257920aa,
         type: 3}
@@ -1310,7 +1325,7 @@ PrefabInstance:
     - target: {fileID: 6526956946261925780, guid: 282260af5bdd65e428e27cc11cd8390b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6526956946261925780, guid: 282260af5bdd65e428e27cc11cd8390b,
         type: 3}
@@ -1630,6 +1645,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 747041581}
     m_Modifications:
+    - target: {fileID: 4068254234805531015, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4068254235375940017, guid: c7c0df58607c5494ca073dd820ec4504,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1689,6 +1709,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fireball (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068254235375940022, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068254235779891422, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7c0df58607c5494ca073dd820ec4504, type: 3}
@@ -2005,7 +2035,7 @@ PrefabInstance:
     - target: {fileID: 4862707350856217463, guid: d32fdce2ed285c3458d633b2cfe5f77c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4862707350856217463, guid: d32fdce2ed285c3458d633b2cfe5f77c,
         type: 3}
@@ -2100,6 +2130,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 747041581}
     m_Modifications:
+    - target: {fileID: 4068254234805531015, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4068254235375940017, guid: c7c0df58607c5494ca073dd820ec4504,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2159,6 +2194,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fireball (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068254235375940022, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068254235779891422, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7c0df58607c5494ca073dd820ec4504, type: 3}
@@ -2414,6 +2459,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 747041581}
     m_Modifications:
+    - target: {fileID: 4068254234805531015, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4068254235375940017, guid: c7c0df58607c5494ca073dd820ec4504,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2473,6 +2523,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fireball (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068254235375940022, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068254235779891422, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7c0df58607c5494ca073dd820ec4504, type: 3}
@@ -2748,6 +2808,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 747041581}
     m_Modifications:
+    - target: {fileID: 4068254234805531015, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4068254235375940017, guid: c7c0df58607c5494ca073dd820ec4504,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2808,6 +2873,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fireball (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 4068254235375940022, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068254235779891422, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7c0df58607c5494ca073dd820ec4504, type: 3}
 --- !u!1 &747041580
@@ -2820,7 +2895,7 @@ GameObject:
   m_Component:
   - component: {fileID: 747041581}
   - component: {fileID: 747041582}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: FlameFloor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2881,6 +2956,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 747041581}
     m_Modifications:
+    - target: {fileID: 4068254234805531015, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4068254235375940017, guid: c7c0df58607c5494ca073dd820ec4504,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2940,6 +3020,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fireball (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068254235375940022, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068254235779891422, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7c0df58607c5494ca073dd820ec4504, type: 3}
@@ -3346,6 +3436,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 747041581}
     m_Modifications:
+    - target: {fileID: 4068254234805531015, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4068254235375940017, guid: c7c0df58607c5494ca073dd820ec4504,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3406,6 +3501,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fireball (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 4068254235375940022, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068254235779891422, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7c0df58607c5494ca073dd820ec4504, type: 3}
 --- !u!1001 &867538175
@@ -3453,7 +3558,7 @@ PrefabInstance:
     - target: {fileID: 568593309107070642, guid: abf69a7ed686789459df6ac21000bb71,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 568593309107070642, guid: abf69a7ed686789459df6ac21000bb71,
         type: 3}
@@ -3714,6 +3819,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 747041581}
     m_Modifications:
+    - target: {fileID: 4068254234805531015, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4068254235375940017, guid: c7c0df58607c5494ca073dd820ec4504,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3773,6 +3883,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fireball (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068254235375940022, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068254235779891422, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7c0df58607c5494ca073dd820ec4504, type: 3}
@@ -3868,6 +3988,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 747041581}
     m_Modifications:
+    - target: {fileID: 4068254234805531015, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4068254235375940017, guid: c7c0df58607c5494ca073dd820ec4504,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3928,8 +4053,87 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fireball (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 4068254235375940022, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068254235779891422, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7c0df58607c5494ca073dd820ec4504, type: 3}
+--- !u!1001 &974890105
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8350144664285205725, guid: 3f9d02b474e587f4e9939d3bda29fe82,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.710658
+      objectReference: {fileID: 0}
+    - target: {fileID: 8350144664285205725, guid: 3f9d02b474e587f4e9939d3bda29fe82,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 8350144664285205725, guid: 3f9d02b474e587f4e9939d3bda29fe82,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8350144664285205725, guid: 3f9d02b474e587f4e9939d3bda29fe82,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8350144664285205725, guid: 3f9d02b474e587f4e9939d3bda29fe82,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8350144664285205725, guid: 3f9d02b474e587f4e9939d3bda29fe82,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8350144664285205725, guid: 3f9d02b474e587f4e9939d3bda29fe82,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8350144664285205725, guid: 3f9d02b474e587f4e9939d3bda29fe82,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8350144664285205725, guid: 3f9d02b474e587f4e9939d3bda29fe82,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8350144664285205725, guid: 3f9d02b474e587f4e9939d3bda29fe82,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8350144664285205725, guid: 3f9d02b474e587f4e9939d3bda29fe82,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8350144664285205795, guid: 3f9d02b474e587f4e9939d3bda29fe82,
+        type: 3}
+      propertyPath: m_Name
+      value: Torch
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3f9d02b474e587f4e9939d3bda29fe82, type: 3}
 --- !u!1001 &1009808252
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3937,6 +4141,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 747041581}
     m_Modifications:
+    - target: {fileID: 4068254234805531015, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4068254235375940017, guid: c7c0df58607c5494ca073dd820ec4504,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3996,6 +4205,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fireball (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068254235375940022, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068254235779891422, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7c0df58607c5494ca073dd820ec4504, type: 3}
@@ -4528,7 +4747,7 @@ PrefabInstance:
     - target: {fileID: 4131540678727850363, guid: 3d05347c253f4984c8fb6e8480b56a6d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4131540678727850363, guid: 3d05347c253f4984c8fb6e8480b56a6d,
         type: 3}
@@ -4564,6 +4783,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 747041581}
     m_Modifications:
+    - target: {fileID: 4068254234805531015, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4068254235375940017, guid: c7c0df58607c5494ca073dd820ec4504,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4623,6 +4847,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fireball (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068254235375940022, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068254235779891422, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7c0df58607c5494ca073dd820ec4504, type: 3}
@@ -4874,7 +5108,7 @@ PrefabInstance:
     - target: {fileID: 6071507214100173869, guid: 522d09284855b9942b67856392f30542,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6071507214100173869, guid: 522d09284855b9942b67856392f30542,
         type: 3}
@@ -4964,7 +5198,7 @@ PrefabInstance:
     - target: {fileID: 4711689361508855948, guid: 90fdc6c537ec14a488d9943f0fdefeac,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4711689361508855948, guid: 90fdc6c537ec14a488d9943f0fdefeac,
         type: 3}
@@ -5225,6 +5459,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 747041581}
     m_Modifications:
+    - target: {fileID: 4068254234805531015, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4068254235375940017, guid: c7c0df58607c5494ca073dd820ec4504,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5284,6 +5523,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fireball (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068254235375940022, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068254235779891422, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7c0df58607c5494ca073dd820ec4504, type: 3}
@@ -5493,6 +5742,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 747041581}
     m_Modifications:
+    - target: {fileID: 4068254234805531015, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4068254235375940017, guid: c7c0df58607c5494ca073dd820ec4504,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5552,6 +5806,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fireball (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068254235375940022, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068254235779891422, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7c0df58607c5494ca073dd820ec4504, type: 3}
@@ -5704,6 +5968,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 747041581}
     m_Modifications:
+    - target: {fileID: 4068254234805531015, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4068254235375940017, guid: c7c0df58607c5494ca073dd820ec4504,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5764,6 +6033,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fireball (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 4068254235375940022, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068254235779891422, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7c0df58607c5494ca073dd820ec4504, type: 3}
 --- !u!4 &1313299173 stripped
@@ -5785,6 +6064,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 747041581}
     m_Modifications:
+    - target: {fileID: 4068254234805531015, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4068254235375940017, guid: c7c0df58607c5494ca073dd820ec4504,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5844,6 +6128,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fireball (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068254235375940022, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068254235779891422, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7c0df58607c5494ca073dd820ec4504, type: 3}
@@ -6106,6 +6400,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 747041581}
     m_Modifications:
+    - target: {fileID: 4068254234805531015, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4068254235375940017, guid: c7c0df58607c5494ca073dd820ec4504,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6166,6 +6465,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fireball (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 4068254235375940022, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068254235779891422, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7c0df58607c5494ca073dd820ec4504, type: 3}
 --- !u!1001 &1416298179
@@ -6218,7 +6527,7 @@ PrefabInstance:
     - target: {fileID: 4370986558953379955, guid: b18ee48566fa1164c857b8f9de0b4871,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4370986558953379955, guid: b18ee48566fa1164c857b8f9de0b4871,
         type: 3}
@@ -6260,6 +6569,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 747041581}
     m_Modifications:
+    - target: {fileID: 4068254234805531015, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4068254235375940017, guid: c7c0df58607c5494ca073dd820ec4504,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6319,6 +6633,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fireball (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068254235375940022, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068254235779891422, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7c0df58607c5494ca073dd820ec4504, type: 3}
@@ -6983,7 +7307,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1509580124 stripped
 Transform:
@@ -7056,7 +7380,7 @@ PrefabInstance:
     - target: {fileID: 6071507214100173869, guid: 522d09284855b9942b67856392f30542,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6071507214100173869, guid: 522d09284855b9942b67856392f30542,
         type: 3}
@@ -7265,6 +7589,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 747041581}
     m_Modifications:
+    - target: {fileID: 4068254234805531015, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4068254235375940017, guid: c7c0df58607c5494ca073dd820ec4504,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7325,6 +7654,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fireball (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 4068254235375940022, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068254235779891422, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7c0df58607c5494ca073dd820ec4504, type: 3}
 --- !u!4 &1579041897 stripped
@@ -7346,6 +7685,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 747041581}
     m_Modifications:
+    - target: {fileID: 4068254234805531015, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4068254235375940017, guid: c7c0df58607c5494ca073dd820ec4504,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7406,6 +7750,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fireball (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4068254235375940022, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068254235779891422, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7c0df58607c5494ca073dd820ec4504, type: 3}
 --- !u!1001 &1609876644
@@ -7458,7 +7812,7 @@ PrefabInstance:
     - target: {fileID: 4592013531439821587, guid: b1ea0167c3934434996cd6518ecf89f5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4592013531439821587, guid: b1ea0167c3934434996cd6518ecf89f5,
         type: 3}
@@ -7682,7 +8036,7 @@ PrefabInstance:
     - target: {fileID: 5613546256454360095, guid: bcd33bf33dd36e54c987a7dc9d51edfd,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5613546256454360095, guid: bcd33bf33dd36e54c987a7dc9d51edfd,
         type: 3}
@@ -7933,7 +8287,7 @@ PrefabInstance:
     - target: {fileID: 3705674382941852155, guid: b895404dd947cde4fad630f605186168,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3705674382941852155, guid: b895404dd947cde4fad630f605186168,
         type: 3}
@@ -8044,6 +8398,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 747041581}
     m_Modifications:
+    - target: {fileID: 4068254234805531015, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4068254235375940017, guid: c7c0df58607c5494ca073dd820ec4504,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8103,6 +8462,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fireball (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068254235375940022, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068254235779891422, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7c0df58607c5494ca073dd820ec4504, type: 3}
@@ -9176,6 +9545,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 747041581}
     m_Modifications:
+    - target: {fileID: 4068254234805531015, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4068254235375940017, guid: c7c0df58607c5494ca073dd820ec4504,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9235,6 +9609,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fireball (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068254235375940022, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068254235779891422, guid: c7c0df58607c5494ca073dd820ec4504,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7c0df58607c5494ca073dd820ec4504, type: 3}
