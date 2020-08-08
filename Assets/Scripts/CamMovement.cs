@@ -42,11 +42,22 @@ public class CamMovement : MonoBehaviour
             if (rewindFlag)
             {
                 transform.Translate(Vector3.left * Time.deltaTime * scrollSpeed * rewindFactor);
+<<<<<<< HEAD
                 transform.position = new Vector3(Mathf.Clamp(transform.position.x, min_X, max_X), Mathf.Clamp(target.position.y, min_Y, max_Y), transform.position.z);
                 //transform.position = new Vector3(Mathf.Clamp(target.position.x, min_X, max_X), Mathf.Clamp(target.position.y, min_Y, max_Y), transform.position.z);
             } 
             else 
                 transform.position = new Vector3(Mathf.Clamp(target.position.x, min_X, max_X), Mathf.Clamp(target.position.y, min_Y, max_Y), transform.position.z);
+=======
+            else
+                transform.Translate(Vector3.right * Time.deltaTime * scrollSpeed);
+
+            if (target == null)
+                return; 
+
+            Vector3 yes = new Vector3(transform.position.x, target.position.y, transform.position.z);
+            transform.position = Vector3.MoveTowards(transform.position, yes, smoothSpeed * Time.deltaTime); 
+>>>>>>> parent of 173ecc2... Tons done
         }
     }
 
