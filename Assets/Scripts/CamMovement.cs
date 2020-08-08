@@ -9,12 +9,6 @@ public class CamMovement : MonoBehaviour
     [SerializeField] float rewindFactor = 1.5f;
     [SerializeField] float smoothSpeed = 1f;
 
-    [Header("Clamp Values")]
-    [SerializeField] float min_X = 0f;
-    [SerializeField] float max_X = 5f;
-    [SerializeField] float min_Y = 0f;
-    [SerializeField] float max_Y = 10f;
-
     private Transform target;
     private bool rewindFlag = false;
     private bool pause = false;
@@ -22,14 +16,14 @@ public class CamMovement : MonoBehaviour
     private void OnEnable()
     {
         EndTrigger.onAction += End;
-        //StartTrigger.onStart += Begin;
+        StartTrigger.onStart += Begin;
         Player.playerTarget += AcquirePlayer;
     }
 
     private void OnDisable()
     {
         EndTrigger.onAction -= End;
-        //StartTrigger.onStart -= Begin;
+        StartTrigger.onStart -= Begin;
         Player.playerTarget -= AcquirePlayer;
     }
 
@@ -38,10 +32,9 @@ public class CamMovement : MonoBehaviour
     {
         if (!pause)
         {
-            if (target == null) return; 
             if (rewindFlag)
-            {
                 transform.Translate(Vector3.left * Time.deltaTime * scrollSpeed * rewindFactor);
+<<<<<<< HEAD
 <<<<<<< HEAD
                 transform.position = new Vector3(Mathf.Clamp(transform.position.x, min_X, max_X), Mathf.Clamp(target.position.y, min_Y, max_Y), transform.position.z);
                 //transform.position = new Vector3(Mathf.Clamp(target.position.x, min_X, max_X), Mathf.Clamp(target.position.y, min_Y, max_Y), transform.position.z);
@@ -58,6 +51,16 @@ public class CamMovement : MonoBehaviour
             Vector3 yes = new Vector3(transform.position.x, target.position.y, transform.position.z);
             transform.position = Vector3.MoveTowards(transform.position, yes, smoothSpeed * Time.deltaTime); 
 >>>>>>> parent of 173ecc2... Tons done
+=======
+            //else
+                //transform.Translate(Vector3.right * Time.deltaTime * scrollSpeed);
+
+            if (target == null || rewindFlag)
+                return; 
+
+            Vector3 yes = new Vector3(target.position.x, target.position.y, transform.position.z);
+            transform.position = Vector3.MoveTowards(transform.position, yes, smoothSpeed * Time.deltaTime);
+>>>>>>> parent of f9d5574... Smoothed camera movement
         }
     }
 
@@ -68,7 +71,7 @@ public class CamMovement : MonoBehaviour
 
     public void Begin(float delay)
     {
-        //StartTrigger.onStart -= Begin;
+        StartTrigger.onStart -= Begin;
         Pause(true);
         Invoke("BeginStart", delay);
     }
