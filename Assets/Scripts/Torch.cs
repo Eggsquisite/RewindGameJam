@@ -9,7 +9,7 @@ public class Torch : MonoBehaviour
 
     Animator anim;
 
-    private void Start()
+    private void Awake()
     {
         anim = GetComponent<Animator>();
         EndTrigger.torchNum += 1;

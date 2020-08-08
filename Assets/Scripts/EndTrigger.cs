@@ -27,6 +27,12 @@ public class EndTrigger : MonoBehaviour
 
         if (anim == null)
             anim = GetComponent<Animator>();
+
+        if (torchNum == 0)
+        {
+            endReady = true;
+            anim.SetTrigger("ready");
+        }
     }
 
     private void OnEnable()
