@@ -6,10 +6,25 @@ public class RewindAnimation : MonoBehaviour
 {
 
     Animator anim;
+    private bool rewinding = false;
 
     private void Start()
     {
         anim = GetComponent<Animator>();
+    }
+
+    private void Update()
+    {
+        if (RewindManager.IsRewinding() && !rewinding)
+        {
+            anim.SetFloat("speed", -2f);
+            rewinding = true;
+        }
+        else if (!RewindManager.IsRewinding() && rewinding)
+        {
+            anim.SetFloat("speed", 1f);
+            rewinding = false;
+        }
     }
 
     private void OnEnable()
@@ -22,11 +37,6 @@ public class RewindAnimation : MonoBehaviour
         EndTrigger.onAction -= EndGlitch;
     }
 
-    private void Rewind(float rewindFactor)
-    {
-        anim.SetFloat("rewind", rewindFactor);
-    }
-
     private void EndGlitch(float delay)
     {
         Invoke("GlitchAnim", delay);
@@ -34,6 +44,6 @@ public class RewindAnimation : MonoBehaviour
 
     private void GlitchAnim()
     { 
-        anim.SetTrigger("glitch");
+        anim.SetTrigger("lit");
     }
 }

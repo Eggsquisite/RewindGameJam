@@ -23,7 +23,7 @@ public class Torch : MonoBehaviour
 
     private void LightUp()
     {
-        anim.SetTrigger("lit");
+        anim.SetBool("lit", true);
         onTrigger?.Invoke();
     }
 }

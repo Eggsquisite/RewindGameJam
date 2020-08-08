@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 8350144664285205724}
   - component: {fileID: 1440133557}
   - component: {fileID: 1440133556}
-  m_Layer: 10
+  - component: {fileID: 1735247856}
+  m_Layer: 0
   m_Name: Torch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,6 +145,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6103e875c806a8443b5e23323f20b8af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1735247856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8350144664285205795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f26b891bba602114cbd3ea184f1b6473, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8350144664795679793
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,7 +167,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8350144664795679792}
   - component: {fileID: 8350144664795679795}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
