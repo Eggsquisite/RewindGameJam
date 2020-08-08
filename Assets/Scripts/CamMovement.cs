@@ -9,13 +9,6 @@ public class CamMovement : MonoBehaviour
     [SerializeField] float rewindFactor = 1.5f;
     [SerializeField] float smoothSpeed = 1f;
 
-    [Header("Clamp Values")]
-    [SerializeField] float min_X = 0f;
-    [SerializeField] float max_X = 5f;
-    [SerializeField] float min_Y = 0f;
-    [SerializeField] float max_Y = 10f;
-
-
     private Transform target;
     private bool rewindFlag = false;
     private bool pause = false;
@@ -41,10 +34,10 @@ public class CamMovement : MonoBehaviour
         {
             if (rewindFlag)
                 transform.Translate(Vector3.left * Time.deltaTime * scrollSpeed * rewindFactor);
-            else
-                transform.Translate(Vector3.right * Time.deltaTime * scrollSpeed);
+            //else
+                //transform.Translate(Vector3.right * Time.deltaTime * scrollSpeed);
 
-            if (target == null)
+            if (target == null || rewindFlag)
                 return; 
 
             Vector3 yes = new Vector3(target.position.x, target.position.y, transform.position.z);
@@ -81,6 +74,7 @@ public class CamMovement : MonoBehaviour
     {
         Pause(false);
         rewindFlag = true;
+        Debug.Log("Camera backtracking");
     }
 
     private void AcquirePlayer(Transform player)
