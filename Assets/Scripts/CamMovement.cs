@@ -48,7 +48,6 @@ public class CamMovement : MonoBehaviour
                 transform.position = new Vector3(Mathf.Clamp(target.position.x, min_X, max_X), Mathf.Clamp(target.position.y, min_Y, max_Y), transform.position.z);
         }
     }
-    
 
     public void Pause(bool status)
     { 

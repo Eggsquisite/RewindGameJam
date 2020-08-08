@@ -45,6 +45,7 @@ public class EndTrigger : MonoBehaviour
         Torch.onTrigger += TorchLit;
     }
 
+
     private void OnDisable()
     {
         onAction -= BeginRewind;

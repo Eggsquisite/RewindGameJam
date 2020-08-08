@@ -19,12 +19,20 @@ public class LevelManager : MonoBehaviour
 
     public void LoadNextLevel(GameObject g)
     {
+        Torch.firstTorch = true;
+        EscapeMenu.isPaused = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void RestartLevel()
     {
         Torch.firstTorch = true;
+        EscapeMenu.isPaused = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
