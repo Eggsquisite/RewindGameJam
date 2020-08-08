@@ -21,6 +21,7 @@ public class MoveableObject : MonoBehaviour {
     private RewindableObject ro;
     private Vector2 moveDirection;
     private Vector3 rotVector = Vector3.forward * 2 * (float) (Math.PI);
+    
 
     void Start() {
         if (recordPositions || recordRotations) ro = new RewindableObject(gameObject.transform, recordPositions, recordRotations);

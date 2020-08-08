@@ -11,10 +11,14 @@ public class WindmillMovesPlatform : MonoBehaviour {
     private Rigidbody2D rb;
     private Vector2 dir;
     public float platformSpeed = 0.01f;
+    private WindmillStopRotation wsr;
+    private bool farRight = false;
+    private bool farLeft = false;
     
     void Start() {
         windmill = windmillGO.GetComponent<MoveableObject>();
         rb = windmillGO.GetComponent<Rigidbody2D>();
+        wsr = windmillGO.GetComponent<WindmillStopRotation>();
         dir = (position1 - position2).normalized;
     }
 
@@ -26,11 +30,26 @@ public class WindmillMovesPlatform : MonoBehaviour {
 
             if (angularVel != 0) {
                 Vector2 newPos = (Vector2)(transform.position) + (angularVel * dir * Time.fixedDeltaTime);
-                if (newPos.x < position1.x || newPos.x > position2.x) {} //do nothing
+                if (newPos.x < position1.x) farLeft = true;
+                else if (newPos.x > position2.x) farRight = true;
                 else {
                     transform.Translate(angularVel * dir * Time.fixedDeltaTime);
+                    farLeft = false;
+                    farRight = false;
                 }
             }
         }
+
+        if (farLeft) {
+            wsr.noCW = true;
+            //Debug.Log("Enabling no CW");
+        }
+        else wsr.noCW = false;
+
+        if (farRight) {
+            wsr.noCCW = true;
+            //Debug.Log("Enabling no CCW");
+        }
+        else wsr.noCCW = false;
     }
 }

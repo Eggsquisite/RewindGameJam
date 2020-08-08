@@ -80,8 +80,8 @@ MonoBehaviour:
   enableAutoMovement: 0
   position1: {x: 0, y: 0}
   position2: {x: 0, y: 0}
-  maxSpeed: 0
-  waitTime: 0
+  maxSpeed: 1
+  waitTime: 2
   recordPositions: 1
   maxAngularVelocity: 0
   recordRotations: 0
