@@ -5,7 +5,7 @@ using UnityEngine;
 public class CamMovement : MonoBehaviour
 {
     // This can be used to scroll the map as well
-    [SerializeField] float scrollSpeed = 2.0f;
+    [SerializeField] float scrollSpeed = 0.0f;
     [SerializeField] float rewindFactor = 1.5f;
     [SerializeField] float smoothSpeed = 1f;
 
@@ -40,7 +40,7 @@ public class CamMovement : MonoBehaviour
             if (target == null)
                 return; 
 
-            Vector3 yes = new Vector3(transform.position.x, target.position.y, transform.position.z);
+            Vector3 yes = new Vector3(target.position.x, target.position.y, transform.position.z);
             transform.position = Vector3.MoveTowards(transform.position, yes, smoothSpeed * Time.deltaTime); 
         }
     }

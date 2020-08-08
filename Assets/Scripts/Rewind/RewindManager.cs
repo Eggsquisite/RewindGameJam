@@ -10,7 +10,7 @@ public class RewindManager : MonoBehaviour {
 
     private static bool trigger = false;
     private static float rewindRate;
-    private static float cooldown = 1f;
+    private static float cooldown = 0f;
     private static float cooldownTimer;
     private static float maxRewindTime = 3f;
     private static float maxRewindTimer;
