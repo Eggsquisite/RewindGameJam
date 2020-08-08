@@ -52,6 +52,7 @@ public class Player : MonoBehaviour
 
         sp.enabled = false;
         playerTarget?.Invoke(this.transform);
+        Health.SetPlayerHealth(health);
     }
 
     private void OnEnable()
@@ -194,6 +195,7 @@ public class Player : MonoBehaviour
         if (recovery || invincible)
             return;
 
+        
         health -= dmg;
         recovery = true;
         Debug.Log("health: " + health);
