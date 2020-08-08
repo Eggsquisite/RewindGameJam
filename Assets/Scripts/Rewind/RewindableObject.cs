@@ -40,7 +40,7 @@ public class RecordedPositions {
     }
     
     public Vector3 RewindBy(int amount) {
-        if ((pos - amount) >= 0) pos -= amount;
+        if ((pos - 1 - amount) >= 0) pos -= (amount+1);
         return recordedPosition[pos];
     }
 }
