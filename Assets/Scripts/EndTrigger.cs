@@ -22,6 +22,8 @@ public class EndTrigger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        backtrackBegin = false;
+
         if (cam == null)
             cam = Camera.main.gameObject;
 
