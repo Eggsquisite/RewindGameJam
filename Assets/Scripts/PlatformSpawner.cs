@@ -19,10 +19,10 @@ public class PlatformSpawner : MonoBehaviour {
         int noOfPlatforms = (int)((finish - start).magnitude / platformSpacing);
         platforms = new List<GameObject>(noOfPlatforms);
         platformSpacing = (finish - start).magnitude / noOfPlatforms;
-
+        Debug.Log("Making " + noOfPlatforms + " platforms");
         for (int i = 0; i < noOfPlatforms; i++) {
             platforms.Add(Instantiate(platformPrefab, start + (i*platformSpacing*dir), Quaternion.identity));
-            Debug.Log("Platform created at: " + (start + (i*platformSpacing*dir)));
+            //Debug.Log("Platform created at: " + (start + (i*platformSpacing*dir)));
         }
     }
 
