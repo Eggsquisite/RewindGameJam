@@ -34,9 +34,14 @@ public class EnableOnEndTrigger : MonoBehaviour
 
     private void EnableGameObject(bool status)
     {
+<<<<<<< HEAD
         if (!gameObject.activeSelf) gameObject.SetActive(true);
         if (sp != null) sp.enabled = status;
         if (coll != null) coll.enabled = status;
+=======
+        sp.enabled = status;
+        coll.enabled = status;
+>>>>>>> f9d55747295fde350dab831b636a108fc47819af
     }
 
 }

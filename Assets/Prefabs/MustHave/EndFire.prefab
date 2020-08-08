@@ -46,14 +46,14 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.75
-  m_Color: {r: 0.06666667, g: 0.62352943, b: 0.56078434, a: 1}
-  m_Intensity: 0.5
+  m_Color: {r: 0.4509804, g: 0.84313726, b: 0.84313726, a: 1}
+  m_Intensity: 1
   m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: 00000000b544c3f03bd73a2a8193a2f7
   m_LightCookieSprite: {fileID: 0}
   m_UseNormalMap: 0
   m_LightOrder: 0
-  m_AlphaBlendOnOverlap: 0
+  m_AlphaBlendOnOverlap: 1
   m_ShadowIntensity: 0
   m_ShadowVolumeIntensity: 0
   m_PointLightInnerAngle: 180
@@ -85,7 +85,6 @@ GameObject:
   - component: {fileID: 6526956946261925779}
   - component: {fileID: 1780108582}
   - component: {fileID: 1780108583}
-  - component: {fileID: 3349203825485664724}
   m_Layer: 13
   m_Name: EndFire
   m_TagString: Untagged
@@ -147,7 +146,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 708499259
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 0365c40acfee5ed4194f32e3161532a8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -218,29 +217,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   endText: {fileID: 0}
   delay: 2
---- !u!61 &3349203825485664724
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6526956946261925782}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.1296606, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.5625, y: 1.375}
-    newSize: {x: 2.5625, y: 1.375}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.4387798, y: 1.375}
-  m_EdgeRadius: 0

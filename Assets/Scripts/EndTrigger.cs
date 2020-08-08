@@ -27,6 +27,12 @@ public class EndTrigger : MonoBehaviour
 
         if (anim == null)
             anim = GetComponent<Animator>();
+
+        if (torchNum == 0)
+        {
+            anim.SetTrigger("ready");
+            endReady = true;
+        }
     }
 
     private void OnEnable()
@@ -95,7 +101,7 @@ public class EndTrigger : MonoBehaviour
     {
         torches++;
 
-        if (torches >= torchNum)
+        if (torches >= torchNum && !endReady)
         {
             Debug.Log("all torches lit");
             endReady = true;
