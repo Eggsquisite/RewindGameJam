@@ -6,6 +6,7 @@ public class RewindAnimation : MonoBehaviour
 {
 
     Animator anim;
+    public bool isEnemy = false;
     private bool rewinding = false;
 
     private void Start()
@@ -25,7 +26,7 @@ public class RewindAnimation : MonoBehaviour
             anim.SetFloat("speed", 1f);
             rewinding = false;
         }
-        else if (EndTrigger.backtrackBegin)
+        else if (EndTrigger.backtrackBegin && !isEnemy)
         {
             anim.SetFloat("speed", -2f);
         }
