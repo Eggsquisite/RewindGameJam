@@ -11,7 +11,6 @@ public class MusicSingleton : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            Debug.Log("dontdestroyonload: " + gameObject.name);
             DontDestroyOnLoad(gameObject);
         }
         else

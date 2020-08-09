@@ -25,6 +25,10 @@ public class RewindAnimation : MonoBehaviour
             anim.SetFloat("speed", 1f);
             rewinding = false;
         }
+        else if (EndTrigger.backtrackBegin)
+        {
+            anim.SetFloat("speed", -2f);
+        }
     }
 
     private void OnEnable()
@@ -44,6 +48,7 @@ public class RewindAnimation : MonoBehaviour
 
     private void GlitchAnim()
     { 
-        anim.SetTrigger("lit");
+        if (gameObject.name.Contains("Tree"))
+            anim.SetTrigger("lit");
     }
 }

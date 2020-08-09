@@ -53,7 +53,7 @@ public class RewindManager : MonoBehaviour {
         gameObject.SetActive(false);
     }
     private void Update() {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && !Player.death) EnableRewind();
+        if (Input.GetKeyDown(KeyCode.LeftShift) && !Player.death && !EndTrigger.backtrackBegin) EnableRewind();
         else if (Input.GetKeyUp(KeyCode.LeftShift) || Player.death) DisableRewind();
     }
 
