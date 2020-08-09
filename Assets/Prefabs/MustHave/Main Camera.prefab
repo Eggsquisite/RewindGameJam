@@ -470,7 +470,7 @@ MonoBehaviour:
   scrollSpeed: 1
   rewindFactor: 3
   smoothSpeed: 10
-  min_X: -5
+  min_X: -10
   max_X: 20
   min_Y: 0
   max_Y: 10
