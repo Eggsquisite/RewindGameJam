@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
     [SerializeField] float jumpForce = 800.0f;
 
     [Header("Player Stats")]
-    [SerializeField] int health = 3;
+    [SerializeField] int maxHealth = 3;
     [SerializeField] float recoveryDelay = 2f;
 
     private CamMovement cam;
@@ -35,7 +35,8 @@ public class Player : MonoBehaviour
     private Vector3 movement;
     private GameObject projectileGO;
 
-    float horizontalInput;
+    int health = 0;
+    float horizontalInput = 0;
     bool endTrigger = false;
     bool invincible = false;
     bool recovery = false;
@@ -45,21 +46,6 @@ public class Player : MonoBehaviour
     private bool inAir = false;
     private bool isGrounded = false;
     public static bool death = false;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        cam = Camera.main.GetComponent<CamMovement>();
-        rb = GetComponent<Rigidbody2D>();
-        feet = GetComponent<Collider2D>();
-        anim = GetComponent<Animator>();
-        sp = GetComponent<SpriteRenderer>();
-
-        //sp.enabled = false;
-        death = false;
-        playerTarget?.Invoke(this.transform);
-        setHealth(health);
-    }
 
     private void OnEnable()
     {
@@ -71,6 +57,11 @@ public class Player : MonoBehaviour
         StartTrigger.onStart -= Spawn;
     }
 
+    // Start is called before the first frame update
+    void Start()
+    {
+        InitializeVariables();
+    }
 
     // Check ALL keystrokes here
     private void Update() {
@@ -104,6 +95,19 @@ public class Player : MonoBehaviour
             rb.gravityScale = gravityScale;
         }
     }*/
+
+    private void InitializeVariables()
+    {
+        death = false;
+        health = maxHealth;
+        setHealth?.Invoke(health);
+        playerTarget?.Invoke(this.transform);
+        anim = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+        feet = GetComponent<Collider2D>();
+        sp = GetComponent<SpriteRenderer>();
+        cam = Camera.main.GetComponent<CamMovement>();
+    }
 
     private void Spawn(float delay)
     {
@@ -210,7 +214,7 @@ public class Player : MonoBehaviour
         
         health -= dmg;
         recovery = true;
-        playerDamaged(health);
+        playerDamaged?.Invoke(health);
         Debug.Log("health: " + health);
         anim.SetTrigger("hurt");
         StartCoroutine(RecoveryDelay());
@@ -232,7 +236,16 @@ public class Player : MonoBehaviour
 
     public void OutOfBounds()
     {
+        OutOfBoundsHealthUI();
         StartCoroutine(Death());
+    }
+
+    private void OutOfBoundsHealthUI()
+    {
+        for (int i = maxHealth; i >= 0; i--)
+        {
+            playerDamaged?.Invoke(i);
+        }
     }
 
     private IEnumerator Death()
