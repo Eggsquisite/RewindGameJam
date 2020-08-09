@@ -117,7 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8479d31ff4b6d4489c049ce6f8351e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shakeDuration: 3
+  shakeDuration: 5
   shakeAmount: 0.1
   decreaseFactor: 1
 --- !u!61 &2138990908

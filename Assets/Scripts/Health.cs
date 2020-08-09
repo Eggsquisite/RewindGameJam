@@ -9,19 +9,32 @@ public class Health : MonoBehaviour
     private static int maxHealth = 0;
     Animator anim;
 
+    private void OnEnable()
+    {
+        Player.setHealth += SetPlayerHealth;
+        Player.playerDamaged += PlayerHurt;
+    }
+
+    private void OnDisable()
+    {
+        Player.setHealth -= SetPlayerHealth;
+        Player.playerDamaged -= PlayerHurt;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
     }
 
-    public static void SetPlayerHealth(int val)
+    public void SetPlayerHealth(int val)
     {
         maxHealth = val;
     }
 
-    public static void PlayerHurt(int val)
+    public void PlayerHurt(int val)
     {
-
+        if (healthPos == val)
+            anim.SetTrigger("hurt");
     }
 }

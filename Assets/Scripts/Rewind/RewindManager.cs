@@ -53,6 +53,7 @@ public class RewindManager : MonoBehaviour {
         gameObject.SetActive(false);
     }
     private void Update() {
+        // Take out !EndTrigger.backtrackBegin if you want player to rewind during backtrack
         if (Input.GetKeyDown(KeyCode.LeftShift) && !Player.death && !EndTrigger.backtrackBegin) EnableRewind();
         else if (Input.GetKeyUp(KeyCode.LeftShift) || Player.death) DisableRewind();
     }

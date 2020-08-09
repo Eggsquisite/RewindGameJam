@@ -7,8 +7,13 @@ public class Player : MonoBehaviour
     public delegate void PlayerDeath();
     public static event PlayerDeath restartLevel;
 
+    public delegate void PlayerHealth(int value);
+    public static event PlayerHealth setHealth, playerDamaged;
+
     public delegate void Target(Transform target);
     public static event Target playerTarget;
+
+
 
     [SerializeField] private LayerMask platformLayerMask;
     [SerializeField] private LayerMask interactiveLayer;
@@ -53,7 +58,7 @@ public class Player : MonoBehaviour
         //sp.enabled = false;
         death = false;
         playerTarget?.Invoke(this.transform);
-        Health.SetPlayerHealth(health);
+        setHealth(health);
     }
 
     private void OnEnable()
@@ -205,6 +210,7 @@ public class Player : MonoBehaviour
         
         health -= dmg;
         recovery = true;
+        playerDamaged(health);
         Debug.Log("health: " + health);
         anim.SetTrigger("hurt");
         StartCoroutine(RecoveryDelay());

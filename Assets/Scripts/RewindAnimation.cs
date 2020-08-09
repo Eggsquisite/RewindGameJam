@@ -49,7 +49,7 @@ public class RewindAnimation : MonoBehaviour
 
     private void GlitchAnim()
     { 
-        if (gameObject.name.Contains("Tree"))
+        if (!isEnemy)
             anim.SetTrigger("lit");
     }
 }
