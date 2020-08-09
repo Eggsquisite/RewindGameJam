@@ -50,7 +50,7 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
         sp = GetComponent<SpriteRenderer>();
 
-        sp.enabled = false;
+        //sp.enabled = false;
         playerTarget?.Invoke(this.transform);
         Health.SetPlayerHealth(health);
     }
@@ -75,7 +75,6 @@ public class Player : MonoBehaviour
        // disallows player jumping when dying
         if (IsGrounded() && Input.GetKeyDown(KeyCode.Space) && !death && !spawning)
             jumpBool = true;
-
 
         /*if (!endTrigger)
             CheckRewindInput();*/
@@ -110,6 +109,14 @@ public class Player : MonoBehaviour
     {
         spawning = false;
         sp.enabled = true;
+    }
+
+    public void SpawnOut()
+    {
+        spawning = true;
+        Invincible(true);
+        rb.velocity = Vector2.zero;
+        anim.SetBool("spawn_out", true);
     }
 
     private bool IsGrounded() {
@@ -169,7 +176,6 @@ public class Player : MonoBehaviour
 
     private void Stasis()
     {
-        rb.gravityScale = 0;
         rb.velocity = Vector3.zero;
     }
 
@@ -228,8 +234,7 @@ public class Player : MonoBehaviour
         death = true;
         recovery = true;
         anim.SetTrigger("death");
-        Debug.Log("death");
-        rb.velocity = Vector3.zero;
+        rb.velocity = Vector2.zero;
 
         yield return new WaitForSeconds(deathDelay);
         restartLevel();
