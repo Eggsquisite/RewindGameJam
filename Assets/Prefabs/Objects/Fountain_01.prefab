@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1195616169274939971}
   - component: {fileID: 1195616169274939996}
   - component: {fileID: 1195616169274939970}
+  - component: {fileID: 8284217351769450202}
   m_Layer: 0
   m_Name: Fountain_01
   m_TagString: Untagged
@@ -71,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 708499259
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 04c79bb4480eab742b39f409d3fda75b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -102,3 +103,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8284217351769450202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195616169274939997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f26b891bba602114cbd3ea184f1b6473, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
