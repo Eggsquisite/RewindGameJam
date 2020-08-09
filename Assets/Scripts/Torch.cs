@@ -9,10 +9,13 @@ public class Torch : MonoBehaviour
 
     public static bool firstTorch = true;
     Animator anim;
+    Collider2D coll;
 
     private void OnEnable()
     {
         anim = GetComponent<Animator>();
+        coll = GetComponent<Collider2D>();
+
         if (firstTorch && EndTrigger.torchNum > 0)
         {
             EndTrigger.torchNum = 0;
@@ -33,5 +36,6 @@ public class Torch : MonoBehaviour
     {
         anim.SetBool("lit", true);
         onTrigger?.Invoke();
+        coll.enabled = false;
     }
 }

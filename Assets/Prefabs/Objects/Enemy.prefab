@@ -148,9 +148,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedMin: 200
-  speedMax: 250
-  nextWaypointDistanceMin: 0.5
-  nextWayPointDistanceMax: 1
+  speedMax: 300
+  nextWaypointDistanceMin: 0.25
+  nextWayPointDistanceMax: 0.5
   distanceToDetectPlayer: 8
 --- !u!1 &3581279743895234187
 GameObject:

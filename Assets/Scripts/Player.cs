@@ -35,11 +35,11 @@ public class Player : MonoBehaviour
     bool invincible = false;
     bool recovery = false;
     bool spawning = false;
-    bool death = false;
     bool rewindEnabled = false;
     private bool jumpBool = false;
     private bool inAir = false;
     private bool isGrounded = false;
+    public static bool death = false;
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +51,7 @@ public class Player : MonoBehaviour
         sp = GetComponent<SpriteRenderer>();
 
         //sp.enabled = false;
+        death = false;
         playerTarget?.Invoke(this.transform);
         Health.SetPlayerHealth(health);
     }
