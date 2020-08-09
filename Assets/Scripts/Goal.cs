@@ -8,17 +8,29 @@ public class Goal : MonoBehaviour
     public static event GoalReached loadLevel, acquireGoal;
 
     [SerializeField] float delay = 2f;
+    [SerializeField] Transform setPosition;
+
+    private Transform player;
+    private bool spawningOut = false;
 
     private void Start()
     {
         acquireGoal(gameObject);
     }
 
+    private void Update()
+    {
+        if (spawningOut)
+            player.position = new Vector2(setPosition.position.x, setPosition.position.y);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
-            collision.GetComponent<Player>().Invincible(true);
+            spawningOut = true;
+            player = collision.transform;
+            collision.GetComponent<Player>().SpawnOut();
             StartCoroutine(LoadNextLevel());
         }
     }

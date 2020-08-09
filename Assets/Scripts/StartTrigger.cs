@@ -15,9 +15,8 @@ public class StartTrigger : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-        if (onStart != null)
-            onStart(delay);
 
+        onStart?.Invoke(delay);
         Invoke("SpawnOut", delay);
     }
 

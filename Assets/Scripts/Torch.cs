@@ -19,8 +19,8 @@ public class Torch : MonoBehaviour
             firstTorch = false;
         }
 
-        Debug.Log("adding torch");
-        EndTrigger.torchNum += 1;
+        firstTorch = false;
+        EndTrigger.torchNum++;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -23,7 +23,6 @@ public class EndTrigger : MonoBehaviour
     void Start()
     {
         backtrackBegin = false;
-        Debug.Log("torchNum: " + torchNum);
 
         if (cam == null)
             cam = Camera.main.gameObject;
@@ -32,17 +31,14 @@ public class EndTrigger : MonoBehaviour
             anim = GetComponent<Animator>();
 
         if (torchNum == 0)
-        {
-            endReady = true;
-            anim.SetTrigger("ready");
-        }
+            TorchesLit();
     }
 
     private void OnEnable()
     {
         onAction += BeginRewind;
         Goal.acquireGoal += AcquireGoal;
-        Torch.onTrigger += TorchLit;
+        Torch.onTrigger += TorchesLit;
     }
 
 
@@ -50,7 +46,7 @@ public class EndTrigger : MonoBehaviour
     {
         onAction -= BeginRewind;
         Goal.acquireGoal -= AcquireGoal;
-        Torch.onTrigger -= TorchLit;
+        Torch.onTrigger -= TorchesLit;
     }
 
     private void Update()
@@ -107,7 +103,7 @@ public class EndTrigger : MonoBehaviour
         goal = g;
     }
 
-    private void TorchLit()
+    private void TorchesLit()
     {
         torches++;
 
