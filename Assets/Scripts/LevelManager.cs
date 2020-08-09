@@ -17,10 +17,16 @@ public class LevelManager : MonoBehaviour
         Goal.loadLevel -= LoadNextLevel;
     }
 
-    public void LoadNextLevel(GameObject g)
+    private void ResetVariables()
     {
         Torch.firstTorch = true;
         EscapeMenu.isPaused = false;
+        EndTrigger.backtrackBegin = false;
+    }
+
+    public void LoadNextLevel(GameObject g)
+    {
+        ResetVariables();
         StartCoroutine(AsyncLoadNextLevel());
     }
 
@@ -35,9 +41,7 @@ public class LevelManager : MonoBehaviour
 
     public void RestartLevel()
     {
-        //DontDestroyOnLoad(Camera.main);
-        Torch.firstTorch = true;
-        EscapeMenu.isPaused = false;
+        ResetVariables();
         StartCoroutine(AsyncRestartLevel());
     }
 
