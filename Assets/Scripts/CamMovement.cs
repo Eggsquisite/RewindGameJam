@@ -7,7 +7,7 @@ public class CamMovement : MonoBehaviour
     // This can be used to scroll the map as well
     [SerializeField] float scrollSpeed = 2.0f;
     [SerializeField] float rewindFactor = 1.5f;
-    [SerializeField] float smoothSpeed = 1f;
+    [SerializeField] bool noMovement = false;
 
     [Header("Clamp Values")]
     //[SerializeField] float min_X = 0f;
@@ -17,8 +17,8 @@ public class CamMovement : MonoBehaviour
 
     private Transform target;
     private Transform goalPos;
-    private bool rewindFlag = false;
     private bool pause = false;
+    private bool rewindFlag = false;
 
     private void OnEnable()
     {
@@ -39,6 +39,9 @@ public class CamMovement : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
+        if (noMovement)
+            return;
+
         if (!pause)
         {
             if (rewindFlag)

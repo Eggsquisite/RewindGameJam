@@ -82,9 +82,6 @@ public class EndTrigger : MonoBehaviour
     {
         Invoke("SetBacktrack", delay);
         StartCoroutine(LightUp());
-        goal.SetActive(true);
-        goal.GetComponent<Collider2D>().enabled = true;
-        goal.GetComponent<Animator>().SetTrigger("fadeIn");
     }
 
     private IEnumerator LightUp()
@@ -96,6 +93,9 @@ public class EndTrigger : MonoBehaviour
     private void SetBacktrack()
     {
         backtrackBegin = true;
+        goal.SetActive(true);
+        goal.GetComponent<Collider2D>().enabled = true;
+        goal.GetComponent<Animator>().SetTrigger("fadeIn");
     }
 
     private void AcquireGoal(GameObject g)
