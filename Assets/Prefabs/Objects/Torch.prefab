@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6103e875c806a8443b5e23323f20b8af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  torchIgnite: {fileID: 8300000, guid: bd614a45f87ea524faeef888bf8eb562, type: 3}
 --- !u!114 &1735247856
 MonoBehaviour:
   m_ObjectHideFlags: 0

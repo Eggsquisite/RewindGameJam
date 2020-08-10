@@ -7,9 +7,12 @@ public class Torch : MonoBehaviour
     public delegate void TorchTriggered();
     public static event TorchTriggered onTrigger;
 
-    public static bool firstTorch = true;
     Animator anim;
     Collider2D coll;
+
+    private AudioSource audioSource;
+    public AudioClip torchIgnite;
+    public static bool firstTorch = true;
 
     private void OnEnable()
     {
@@ -27,6 +30,7 @@ public class Torch : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         coll = GetComponent<Collider2D>();
+        audioSource = GameObject.Find("Music").GetComponent<AudioSource>();
 
         if (Player.checkpointReached)
             Invoke("LightUp", 0.1f);
@@ -40,8 +44,9 @@ public class Torch : MonoBehaviour
 
     private void LightUp()
     {
-        anim.SetBool("lit", true);
         onTrigger?.Invoke();
         coll.enabled = false;
+        anim.SetBool("lit", true);
+        audioSource.PlayOneShot(torchIgnite);
     }
 }
