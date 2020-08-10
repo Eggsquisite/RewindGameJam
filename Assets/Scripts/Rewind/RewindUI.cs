@@ -26,6 +26,9 @@ public class RewindUI : MonoBehaviour
 
     private void SetUI(bool status)
     {
-        uiImage.SetActive(status);
+        if (EndTrigger.backtrackBegin)
+            uiImage.SetActive(true);
+        else
+            uiImage.SetActive(status);
     }
 }

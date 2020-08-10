@@ -10,11 +10,16 @@ public class StartTrigger : MonoBehaviour
     [SerializeField] float delay = 2f;
 
     Animator anim;
+    SpriteRenderer sp;
 
     // Start is called before the first frame update
     void Start()
     {
+
         anim = GetComponent<Animator>();
+        sp = GetComponent<SpriteRenderer>();
+
+        if (Player.checkpointReached) sp.enabled = false;
 
         onStart?.Invoke(delay);
         Invoke("SpawnOut", delay);

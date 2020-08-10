@@ -13,8 +13,6 @@ public class Player : MonoBehaviour
     public delegate void Target(Transform target);
     public static event Target playerTarget;
 
-
-
     [SerializeField] private LayerMask platformLayerMask;
     [SerializeField] private LayerMask interactiveLayer;
     [SerializeField] float deathDelay = 2f;
@@ -32,8 +30,8 @@ public class Player : MonoBehaviour
     private Collider2D feet;
     private Animator anim;
     private SpriteRenderer sp;
-    private Vector3 movement;
     private GameObject projectileGO;
+    private static Vector2 checkpointPosition = Vector2.zero;
 
     int health = 0;
     float horizontalInput = 0;
@@ -46,6 +44,7 @@ public class Player : MonoBehaviour
     private bool inAir = false;
     private bool isGrounded = false;
     public static bool death = false;
+    public static bool checkpointReached = false;
 
     private void OnEnable()
     {
@@ -98,6 +97,9 @@ public class Player : MonoBehaviour
 
     private void InitializeVariables()
     {
+        if (!checkpointReached)
+            checkpointPosition = Vector2.zero;
+
         death = false;
         health = maxHealth;
         setHealth?.Invoke(health);
@@ -109,8 +111,25 @@ public class Player : MonoBehaviour
         cam = Camera.main.GetComponent<CamMovement>();
     }
 
+    public void SetCheckpoint(Vector2 pos)
+    {
+        checkpointReached = true;
+        if (checkpointPosition == Vector2.zero)
+            checkpointPosition = pos;
+
+        Debug.Log("setting checkpoint: " + checkpointPosition);
+    }
+
     private void Spawn(float delay)
     {
+        Debug.Log("spawning");
+        if (checkpointReached && checkpointPosition != null)
+        {
+            var playerPos = new Vector2(checkpointPosition.x - 1f, checkpointPosition.y);
+            transform.position = playerPos;
+            Debug.Log("using checkpoint: " + checkpointPosition);
+        }
+
         spawning = true;
         Invoke("SpawnReady", delay / 2);
     }

@@ -8,6 +8,7 @@ public class EndTrigger : MonoBehaviour
     public delegate void TriggerAction(float delay);
     public static event TriggerAction onAction;
 
+
     public delegate void RewindUI(bool status);
     public static event RewindUI enableUI;
 
@@ -19,23 +20,26 @@ public class EndTrigger : MonoBehaviour
     GameObject cam;
     GameObject goal;
     Animator anim;
+    Collider2D coll;
+    Transform checkpointPosition;
     int torches;
     bool inRange = false;
     bool endReady = false;
+    bool checkpoint = false;
 
     // Start is called before the first frame update
     void Start()
     {
         backtrackBegin = false;
 
-        if (cam == null)
-            cam = Camera.main.gameObject;
-
-        if (anim == null)
-            anim = GetComponent<Animator>();
-
-        if (torchNum == 0)
-            TorchesLit();
+        if (torchNum == 0) TorchesLit();
+        if (cam == null) cam = Camera.main.gameObject;
+        if (anim == null) anim = GetComponent<Animator>();
+        if (coll == null)
+        {
+            coll = GetComponent<Collider2D>();
+            coll.enabled = false;
+        }
     }
 
     private void OnEnable()
@@ -66,7 +70,10 @@ public class EndTrigger : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            collision.gameObject.GetComponent<Player>().LightRange(true);
+            var playerVar = collision.GetComponent<Player>();
+            playerVar.SetCheckpoint(transform.position);
+            playerVar.LightRange(true);
+
             if (!inRange)
                 inRange = true;
         }
@@ -100,8 +107,7 @@ public class EndTrigger : MonoBehaviour
         enableUI?.Invoke(true);
 
         goal.SetActive(true);
-        goal.GetComponent<Collider2D>().enabled = true;
-        goal.GetComponent<Animator>().SetTrigger("fadeIn");
+        goal.GetComponent<Goal>().BonfireLit();
     }
 
     private void AcquireGoal(GameObject g)
@@ -117,6 +123,8 @@ public class EndTrigger : MonoBehaviour
         {
             Debug.Log("all torches lit");
             endReady = true;
+            if (coll != null)
+                coll.enabled = true;
             anim.SetTrigger("ready");
         }
     }

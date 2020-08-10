@@ -11,11 +11,18 @@ public class Goal : MonoBehaviour
     [SerializeField] Transform setPosition;
 
     private Transform player;
+    private Animator anim;
+    private SpriteRenderer sp;
+    private Collider2D coll;
     private bool spawningOut = false;
 
     private void Start()
     {
         acquireGoal(gameObject);
+
+        if (anim == null) anim = GetComponent<Animator>();
+        if (sp == null) sp = GetComponent<SpriteRenderer>();
+        if (coll == null) coll = GetComponent<Collider2D>();
     }
 
     private void Update()
@@ -33,6 +40,13 @@ public class Goal : MonoBehaviour
             collision.GetComponent<Player>().SpawnOut();
             StartCoroutine(LoadNextLevel());
         }
+    }
+
+    public void BonfireLit()
+    {
+        coll.enabled = true;
+        sp.enabled = true;
+        anim.SetTrigger("fadeIn");
     }
 
     IEnumerator LoadNextLevel()

@@ -17,8 +17,11 @@ public class LevelManager : MonoBehaviour
         Goal.loadLevel -= LoadNextLevel;
     }
 
-    private void ResetVariables()
+    private void ResetVariables(bool newLevel)
     {
+        if (newLevel)
+            Player.checkpointReached = false;
+
         Torch.firstTorch = true;
         EscapeMenu.isPaused = false;
         EndTrigger.backtrackBegin = false;
@@ -26,7 +29,7 @@ public class LevelManager : MonoBehaviour
 
     public void LoadNextLevel(GameObject g)
     {
-        ResetVariables();
+        ResetVariables(true);
         StartCoroutine(AsyncLoadNextLevel());
     }
 
@@ -41,7 +44,7 @@ public class LevelManager : MonoBehaviour
 
     public void RestartLevel()
     {
-        ResetVariables();
+        ResetVariables(false);
         StartCoroutine(AsyncRestartLevel());
     }
 

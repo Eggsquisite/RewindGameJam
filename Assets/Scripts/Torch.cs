@@ -13,9 +13,6 @@ public class Torch : MonoBehaviour
 
     private void OnEnable()
     {
-        anim = GetComponent<Animator>();
-        coll = GetComponent<Collider2D>();
-
         if (firstTorch && EndTrigger.torchNum > 0)
         {
             EndTrigger.torchNum = 0;
@@ -24,6 +21,15 @@ public class Torch : MonoBehaviour
 
         firstTorch = false;
         EndTrigger.torchNum++;
+    }
+
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+        coll = GetComponent<Collider2D>();
+
+        if (Player.checkpointReached)
+            LightUp();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
