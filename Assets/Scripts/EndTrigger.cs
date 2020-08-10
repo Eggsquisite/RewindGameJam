@@ -7,6 +7,10 @@ public class EndTrigger : MonoBehaviour
 {
     public delegate void TriggerAction(float delay);
     public static event TriggerAction onAction;
+
+    public delegate void RewindUI(bool status);
+    public static event RewindUI enableUI;
+
     public static int torchNum = 0;
     public static bool backtrackBegin = false;
 
@@ -93,6 +97,8 @@ public class EndTrigger : MonoBehaviour
     private void SetBacktrack()
     {
         backtrackBegin = true;
+        enableUI?.Invoke(true);
+
         goal.SetActive(true);
         goal.GetComponent<Collider2D>().enabled = true;
         goal.GetComponent<Animator>().SetTrigger("fadeIn");

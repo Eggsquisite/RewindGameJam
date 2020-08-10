@@ -10,11 +10,13 @@ public class RewindUI : MonoBehaviour
     private void OnEnable()
     {
         RewindManager.enableUI += SetUI;
+        EndTrigger.enableUI += SetUI;
     }
 
     private void OnDisable()
     {
         RewindManager.enableUI -= SetUI;
+        EndTrigger.enableUI -= SetUI;
     }
 
     private void Start()
