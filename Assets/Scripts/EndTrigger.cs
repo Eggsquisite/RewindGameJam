@@ -123,8 +123,7 @@ public class EndTrigger : MonoBehaviour
         {
             Debug.Log("all torches lit");
             endReady = true;
-            if (coll != null)
-                coll.enabled = true;
+            coll.enabled = true;
             anim.SetTrigger("ready");
         }
     }

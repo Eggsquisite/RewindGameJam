@@ -255,6 +255,7 @@ public class Player : MonoBehaviour
 
     public void OutOfBounds()
     {
+        health = 0;
         OutOfBoundsHealthUI();
         StartCoroutine(Death());
     }

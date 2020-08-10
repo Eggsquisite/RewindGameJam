@@ -29,7 +29,7 @@ public class Torch : MonoBehaviour
         coll = GetComponent<Collider2D>();
 
         if (Player.checkpointReached)
-            LightUp();
+            Invoke("LightUp", 0.1f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

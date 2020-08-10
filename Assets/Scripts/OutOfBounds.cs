@@ -8,7 +8,8 @@ public class OutOfBounds : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            collision.GetComponent<Player>().OutOfBounds();
+            //collision.GetComponent<Player>().OutOfBounds();
+            collision.GetComponent<Player>().Hurt(999);
         }
     }
 }
