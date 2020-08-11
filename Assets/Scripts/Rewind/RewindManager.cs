@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class RewindManager : MonoBehaviour {
 
-    public delegate void RewindUI(bool status);
-    public static event RewindUI enableUI;
+    public delegate void RewindEvent(bool status);
+    public static event RewindEvent rewindEvent;
 
     [SerializeField] private static bool isRewinding = false;
     [SerializeField] private static float maxRewindRate = 8f; //SET THIS
@@ -39,7 +39,7 @@ public class RewindManager : MonoBehaviour {
     }
 
     public static void EnableRewind() {
-        enableUI?.Invoke(true);
+        rewindEvent?.Invoke(true);
 
         if (cooldownTimer <= 0) {
             isRewinding = true;
@@ -49,7 +49,7 @@ public class RewindManager : MonoBehaviour {
     }
 
     public static void DisableRewind() {
-        enableUI?.Invoke(false);
+        rewindEvent?.Invoke(false);
 
         trigger = false;
         cooldownTimer = cooldown;

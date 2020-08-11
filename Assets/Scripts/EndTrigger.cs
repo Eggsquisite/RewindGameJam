@@ -59,7 +59,7 @@ public class EndTrigger : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && inRange && endReady)
+        if (endReady && Input.GetKeyDown(KeyCode.E) && inRange)
         {
             onAction?.Invoke(delay);
         }
