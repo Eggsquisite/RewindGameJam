@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RewindManager : MonoBehaviour {
-
     public delegate void RewindEvent(bool status);
+
     public static event RewindEvent rewindEvent;
 
     [SerializeField] private static bool isRewinding = false;
@@ -13,15 +13,15 @@ public class RewindManager : MonoBehaviour {
 
     private static bool trigger = false;
     private static float rewindRate;
-    private static float cooldown = 0f;
-    private static float cooldownTimer;
     private static float maxRewindTime = 3f;
     private static float maxRewindTimer;
     private static AudioSource rewindFX;
-    public static bool rewindDisabledForever = false;
+    public static bool rewindAbilityDisabled = false;
+    public bool disablePlayerRewind;
 
     public void Start() {
         rewindFX = GameObject.Find("Rewind Effect").GetComponent<AudioSource>();
+        rewindAbilityDisabled = disablePlayerRewind;
     }
 
     //TODO:  Make smoothing function
@@ -34,59 +34,52 @@ public class RewindManager : MonoBehaviour {
     }
 
     public static bool IsRewinding() {
-        if (!rewindDisabledForever) return isRewinding;
-        else return false;
+        return isRewinding;
     }
 
     public static void EnableRewind() {
         rewindEvent?.Invoke(true);
-
-        if (cooldownTimer <= 0) {
-            isRewinding = true;
-            trigger = true;
-            rewindFX.Play();
-        }
+        isRewinding = true;
+        trigger = true;
+        rewindFX.Play();
     }
 
     public static void DisableRewind() {
         rewindEvent?.Invoke(false);
 
         trigger = false;
-        cooldownTimer = cooldown;
         rewindFX.SetScheduledEndTime(0.5);
     }
 
     public void DisableForever() {
         gameObject.SetActive(false);
     }
+
     private void Update() {
-        // Take out !EndTrigger.backtrackBegin if you want player to rewind during backtrack
-        if (Input.GetKeyDown(KeyCode.LeftShift) && !Player.death && !EndTrigger.backtrackBegin) EnableRewind();
-        else if (Input.GetKeyUp(KeyCode.LeftShift) || Player.death) DisableRewind();
-        //else if (EndTrigger.backtrackBegin) EnableRewind();
+        if (!rewindAbilityDisabled) {
+            // Take out !EndTrigger.backtrackBegin if you want player to rewind during backtrack
+            if (Input.GetKeyDown(KeyCode.LeftShift) && !Player.death && !EndTrigger.backtrackBegin) EnableRewind();
+            else if (Input.GetKeyUp(KeyCode.LeftShift) || Player.death) DisableRewind();
+            //else if (EndTrigger.backtrackBegin) EnableRewind();
+        }
     }
 
+    //Allows for acceleration and decelleration of time
     void FixedUpdate() {
-
         if (trigger) {
             if (rewindRate != maxRewindRate) {
-                rewindRate += rewindAccel * Time.fixedDeltaTime;
+                rewindRate += rewindAccel * Time.fixedDeltaTime; // v = u + at
                 if (rewindRate >= maxRewindRate) rewindRate = maxRewindRate;
             }
         }
         else {
             if (rewindRate != 0f) {
-                rewindRate -= rewindAccel * Time.fixedDeltaTime;
+                rewindRate -= rewindAccel * Time.fixedDeltaTime; // v = u - at
                 if (rewindRate <= 0f) {
                     rewindRate = 0f;
                     isRewinding = false;
                 }
             }
         }
-        //if (rewindRate != 0) Debug.Log(rewindRate);
-
-
-        if (cooldownTimer >= 0) cooldownTimer -= Time.fixedDeltaTime;
-        //Debug.Log(cooldownTimer);
     }
 }

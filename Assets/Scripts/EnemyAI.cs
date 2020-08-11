@@ -1,20 +1,23 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
+using Random = UnityEngine.Random;
 
 public class EnemyAI : MonoBehaviour
 {
 
     private Transform target;
-    public float speedMin = 200f;
-    public float speedMax = 250f;
+    private Transform clone;
+    public float accelMin = 250f;
+    public float accelMax = 400f;
     public float nextWaypointDistanceMin = 1f;
     public float nextWayPointDistanceMax = 3f;
     public float distanceToDetectPlayer = 5f;
 
     Path path;
-    float speed;
+    float acceleration;
     int currentWaypoint = 0;
     bool inRangeOfPlayer = false;
     bool reachedEndOfPath = false;
@@ -37,7 +40,10 @@ public class EnemyAI : MonoBehaviour
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
-        speed = Random.Range(speedMin, speedMax);
+        acceleration = Random.Range(accelMin, accelMax);
+        GameObject go = Instantiate(gameObject);
+        clone = go.transform;
+        go.SetActive(false);
 
         InvokeRepeating("UpdatePath", 0f, 0.5f);
     }
@@ -47,10 +53,11 @@ public class EnemyAI : MonoBehaviour
         target = player;
     }
 
-    void UpdatePath()
-    {
-        if (seeker.IsDone() && inRangeOfPlayer && EndTrigger.backtrackBegin)
+    void UpdatePath() {
+        if (seeker.IsDone() && inRangeOfPlayer && RewindManager.IsRewinding()) 
             seeker.StartPath(rb.position, target.position, OnPathComplete);
+
+        else seeker.StartPath(rb.position, clone.position, OnPathComplete);
     }
 
     void OnPathComplete(Path p)
@@ -68,50 +75,38 @@ public class EnemyAI : MonoBehaviour
             CheckPlayerRange();
     }
 
-    private void CheckPlayerRange()
-    {
-        float distanceToPlayer = Vector2.Distance(rb.position, target.position);
-        if (distanceToPlayer <= distanceToDetectPlayer && !inRangeOfPlayer)
-        {
+    private void CheckPlayerRange() {
+
+        if (Vector2.Distance(rb.position, target.position) <= distanceToDetectPlayer)
             inRangeOfPlayer = true;
-        }
-        else if (distanceToPlayer > distanceToDetectPlayer && inRangeOfPlayer)
-        {
+        else
             inRangeOfPlayer = false;
-        }
     }
 
     // Update is called once per frame
-    void FixedUpdate()
-    {
-        if (path == null)
-            return;
-
-        if (currentWaypoint >= path.vectorPath.Count)
-        {
-            reachedEndOfPath = true;
-            return;
+    void FixedUpdate() {
+        //Debug.Log(currentWaypoint);
+        if (path == null) return;
+        if (currentWaypoint >= path.vectorPath.Count) return;
+        
+        
+        Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position);     // Vector that points from our position to the waypoint
+        Vector2 force = direction.normalized * acceleration * Time.fixedDeltaTime;
+        Vector2 dir = (Vector2) (clone.position) - rb.position;
+        float dist = dir.magnitude;
+        if (!inRangeOfPlayer && dist <= 1f) {
+            //float dampingFactor = 2f;
+            force -= rb.velocity*4f;
         }
-        else {
-            reachedEndOfPath = false;
-        }
-
-        Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;     // Vector that points from our position to the waypoint
-        Vector2 force = direction * speed * Time.deltaTime;
-
         rb.AddForce(force);
 
-        float distanceToWaypoint = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
-        if (distanceToWaypoint < Random.Range(nextWaypointDistanceMin, nextWayPointDistanceMax))
-        {
+        if (direction.magnitude < Random.Range(nextWaypointDistanceMin, nextWayPointDistanceMax))
             currentWaypoint++;
-        }
 
-      
 
-        if (rb.velocity.x >= 0.01f)
+        if (force.x > 0f)
             transform.localScale = new Vector3(-1f, 1f, 1f);
-        else if (rb.velocity.x <= -0.01f)
+        else 
             transform.localScale = new Vector3(1f, 1f, 1f);
     }
 }

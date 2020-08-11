@@ -26,7 +26,7 @@ public class BacktrackManager : MonoBehaviour {
                 backtrackGOs[i].SetActive(true);
             }
 
-            RewindManager.rewindDisabledForever = true;
+            RewindManager.rewindAbilityDisabled = true;
             rm.GetComponent<RewindManager>().DisableForever();
             gameObject.SetActive(false); //disables this forever
         }

@@ -22,13 +22,13 @@ public class RewindAnimation : MonoBehaviour
             rewinding = true;
         }
         else if (!RewindManager.IsRewinding() && rewinding) {
-            Debug.Log("Changing speed for anim " + gameObject.name);
+            //Debug.Log("Changing speed for anim " + gameObject.name);
             anim.SetFloat("speed", 1f);
             rewinding = false;
         }
         else if (EndTrigger.backtrackBegin && !isEnemy)
         {
-            Debug.Log("Changing speed for anim " + gameObject.name);
+            //Debug.Log("Changing speed for anim " + gameObject.name);
             anim.SetFloat("speed", -2f);
         }
     }

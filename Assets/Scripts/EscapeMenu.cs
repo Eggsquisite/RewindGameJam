@@ -49,4 +49,12 @@ public class EscapeMenu : MonoBehaviour
             child.SetActive(false);
         }
     }
+
+    public void AboutScreen() {
+        
+    }
+
+    public void Quit() {
+        Application.Quit();
+    }
 }
