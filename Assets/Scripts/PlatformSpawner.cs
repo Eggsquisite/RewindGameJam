@@ -9,6 +9,7 @@ public class PlatformSpawner : MonoBehaviour {
     public Vector2 finish;
     public float platformSpeed = 3f;
     public float platformSpacing = 4f;
+    public float rewindReduceRate = 0.5f;
 
     private Vector2 dir;
     private List<GameObject> platforms;
@@ -39,7 +40,7 @@ public class PlatformSpawner : MonoBehaviour {
 
         else {
             for (int i = 0; i < platforms.Count; i++) {
-                platforms[i].transform.Translate(-dir*platformSpeed*Time.fixedDeltaTime*RewindManager.GetRewindRate());
+                platforms[i].transform.Translate(-dir*platformSpeed*Time.fixedDeltaTime*RewindManager.GetRewindRate() * rewindReduceRate);
 
                 if (Vector2.Dot((start - (Vector2)(platforms[i].transform.position)).normalized, -dir) < 0) {
                     platforms[i].transform.position = finish;

@@ -17,21 +17,16 @@ public class BacktrackManager : MonoBehaviour {
             Debug.Log("Added " + objs[i].name + " to the Backtrack Manager");
         }
         rm = GameObject.Find("RewindManager");
+
+        EndTrigger.BackTrackTriggered += OnBacktrackTriggered;
     }
 
-    // Update is called once per frame
-    void FixedUpdate() {
-        if (EndTrigger.backtrackBegin) {
-            for (int i = 0; i < backtrackGOs.Count; i++) {
-                backtrackGOs[i].SetActive(true);
-            }
-
-            RewindManager.rewindAbilityDisabled = true;
-            rm.GetComponent<RewindManager>().DisableForever();
-            gameObject.SetActive(false); //disables this forever
+    void OnBacktrackTriggered(float delay) {
+        for (int i = 0; i < backtrackGOs.Count; i++) {
+            backtrackGOs[i].SetActive(true);
         }
     }
-
+    
     void AddGameObject(GameObject go) {
         backtrackGOs.Add(go);
     }

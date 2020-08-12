@@ -51,6 +51,10 @@ public class RewindManager : MonoBehaviour {
         rewindFX.SetScheduledEndTime(0.5);
     }
 
+    public static void DisablePlayerRewindAbility() {
+        rewindAbilityDisabled = true;
+    }
+
     public void DisableForever() {
         gameObject.SetActive(false);
     }

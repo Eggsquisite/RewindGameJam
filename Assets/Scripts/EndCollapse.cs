@@ -27,12 +27,12 @@ public class EndCollapse : MonoBehaviour
         color.r = 1f;
         color.b = 1f;
 
-        EndTrigger.onAction += StartFadeToRed;
+        EndTrigger.BackTrackTriggered += StartFadeToRed;
     }
 
     private void OnDisable()
     {
-        EndTrigger.onAction -= StartFadeToRed;
+        EndTrigger.BackTrackTriggered -= StartFadeToRed;
     }
 
     private void Begin()

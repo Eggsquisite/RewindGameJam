@@ -35,12 +35,12 @@ public class RewindAnimation : MonoBehaviour
 
     private void OnEnable()
     {
-        EndTrigger.onAction += EndGlitch;
+        EndTrigger.BackTrackTriggered += EndGlitch;
     }
 
     private void OnDisable()
     {
-        EndTrigger.onAction -= EndGlitch;
+        EndTrigger.BackTrackTriggered -= EndGlitch;
     }
 
     private void EndGlitch(float delay)

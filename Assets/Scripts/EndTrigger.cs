@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class EndTrigger : MonoBehaviour
 {
     public delegate void TriggerAction(float delay);
-    public static event TriggerAction onAction;
+    public static event TriggerAction BackTrackTriggered;
 
 
     public delegate void RewindUI(bool status);
@@ -40,11 +40,15 @@ public class EndTrigger : MonoBehaviour
             coll = GetComponent<Collider2D>();
             coll.enabled = false;
         }
+
+        coll.enabled = true;
+        endReady = true;
+        anim.SetTrigger("ready");
     }
 
     private void OnEnable()
     {
-        onAction += BeginRewind;
+        BackTrackTriggered += BeginRewind;
         Goal.acquireGoal += AcquireGoal;
         Torch.onTrigger += TorchesLit;
     }
@@ -52,16 +56,16 @@ public class EndTrigger : MonoBehaviour
 
     private void OnDisable()
     {
-        onAction -= BeginRewind;
+        BackTrackTriggered -= BeginRewind;
         Goal.acquireGoal -= AcquireGoal;
         Torch.onTrigger -= TorchesLit;
     }
 
     private void Update()
     {
-        if (endReady && Input.GetKeyDown(KeyCode.E) && inRange)
-        {
-            onAction?.Invoke(delay);
+        if (endReady && Input.GetKeyDown(KeyCode.E) && inRange) {
+            endReady = false;
+            BackTrackTriggered?.Invoke(delay);
         }
     }
 
@@ -93,6 +97,8 @@ public class EndTrigger : MonoBehaviour
     {
         Invoke("SetBacktrack", delay);
         StartCoroutine(LightUp());
+        RewindManager.DisablePlayerRewindAbility();
+        RewindManager.EnableRewind();
     }
 
     private IEnumerator LightUp()

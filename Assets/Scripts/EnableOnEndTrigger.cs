@@ -10,12 +10,12 @@ public class EnableOnEndTrigger : MonoBehaviour
 
     private void OnEnable()
     {
-        EndTrigger.onAction += Backtrack;
+        EndTrigger.BackTrackTriggered += Backtrack;
     }
 
     private void OnDisable()
     {
-        EndTrigger.onAction -= Backtrack;
+        EndTrigger.BackTrackTriggered -= Backtrack;
     }
 
     // Start is called before the first frame update

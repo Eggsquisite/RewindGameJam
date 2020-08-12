@@ -14,11 +14,11 @@ public class TextAppear : MonoBehaviour
     }
 
     private void OnEnable() {
-        EndTrigger.onAction += ShowText;
+        EndTrigger.BackTrackTriggered += ShowText;
     }
 
     private void OnDisable() {
-        EndTrigger.onAction -= ShowText;
+        EndTrigger.BackTrackTriggered -= ShowText;
     }
 
     private void ShowText(float delay) {

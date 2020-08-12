@@ -220,9 +220,9 @@ public class Player : MonoBehaviour
     public void LightRange(bool status)
     {
         if (status)
-            EndTrigger.onAction += Light;
+            EndTrigger.BackTrackTriggered += Light;
         else
-            EndTrigger.onAction -= Light;
+            EndTrigger.BackTrackTriggered -= Light;
     }
 
     public void Hurt(int dmg)

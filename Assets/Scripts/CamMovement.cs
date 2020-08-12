@@ -22,7 +22,7 @@ public class CamMovement : MonoBehaviour
 
     private void OnEnable()
     {
-        EndTrigger.onAction += End;
+        EndTrigger.BackTrackTriggered += End;
         Goal.acquireGoal += AcquireGoal;
         //StartTrigger.onStart += Begin;
         Player.playerTarget += AcquirePlayer;
@@ -30,7 +30,7 @@ public class CamMovement : MonoBehaviour
 
     private void OnDisable()
     {
-        EndTrigger.onAction -= End;
+        EndTrigger.BackTrackTriggered -= End;
         Goal.acquireGoal -= AcquireGoal;
         //StartTrigger.onStart -= Begin;
         Player.playerTarget -= AcquirePlayer;
@@ -74,7 +74,7 @@ public class CamMovement : MonoBehaviour
 
 
     public void End(float delay) {
-        EndTrigger.onAction -= End;
+        EndTrigger.BackTrackTriggered -= End;
         Pause(true);
         Invoke("EndStart", delay);
     }
