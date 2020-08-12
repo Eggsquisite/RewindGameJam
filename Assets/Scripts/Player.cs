@@ -71,12 +71,6 @@ public class Player : MonoBehaviour
        // disallows player jumping when dying
         if (IsGrounded() && Input.GetKeyDown(KeyCode.Space) && !death && !spawning)
             jumpBool = true;
-
-        /*if (!endTrigger)
-            CheckRewindInput();*/
-
-        //if (RewindManager.isRewinding)
-        //    Stasis();
     }
 
     
@@ -84,16 +78,6 @@ public class Player : MonoBehaviour
         Move();
         if (RewindManager.IsRewinding() && IsOnProjectile()) AddProjectileForce();
     }
-
-    /*public void CheckRewindInput() {
-        if (Input.GetKeyDown(KeyCode.LeftShift)) {
-            RewindManager.EnableRewind();
-        }
-        else if (Input.GetKeyUp(KeyCode.LeftShift)) {
-            RewindManager.DisableRewind();
-            rb.gravityScale = gravityScale;
-        }
-    }*/
 
     private void InitializeVariables()
     {
@@ -170,7 +154,6 @@ public class Player : MonoBehaviour
         if (inAir && IsGrounded()) { //check for ground every frame while airborn
             anim.SetBool("jump", false);
             inAir = false;
-            //Debug.Log("We hit the ground");
         }
 
         if (jumpBool && IsGrounded()) {
@@ -178,7 +161,6 @@ public class Player : MonoBehaviour
             anim.SetBool("jump", true);
             jumpBool = false;
             inAir = true;
-            //Debug.Log("We jumped");
         }
         else jumpBool = false;
 
@@ -197,15 +179,8 @@ public class Player : MonoBehaviour
         Vector2 r = transform.position - projectileGO.transform.position;
         Vector2 r2 = new Vector2(r.y, -r.x); //orthogonal
         float angularVel = projectileGO.GetComponent<MoveableObject>().GetAngularVelocity();
-        //Debug.Log(transform.position + "    " + projectileGO.transform.position + "    " + r);
         rb.AddForce(rb.mass * angularVel * angularVel * r * 60f); //centrifugal
         rb.AddForce(rb.mass * angularVel * angularVel * r2 * 50f); //orthogonal (CW direction)
-        //Debug.Log("Adding Projectile Force");
-    }
-
-    private void Stasis()
-    {
-        rb.velocity = Vector3.zero;
     }
 
     private void Light(float delay)

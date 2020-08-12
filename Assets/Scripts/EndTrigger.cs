@@ -30,7 +30,7 @@ public class EndTrigger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        backtrackBegin = false;
+
 
         if (torchNum == 0) TorchesLit();
         if (cam == null) cam = Camera.main.gameObject;
@@ -41,9 +41,10 @@ public class EndTrigger : MonoBehaviour
             coll.enabled = false;
         }
 
-        coll.enabled = true;
-        endReady = true;
-        anim.SetTrigger("ready");
+        //UNCOMMENT THESE TO TEST BACKTRACK AT BONFIRE
+        //coll.enabled = true;
+        //endReady = true;
+        //anim.SetTrigger("ready");
     }
 
     private void OnEnable()
@@ -67,6 +68,11 @@ public class EndTrigger : MonoBehaviour
             endReady = false;
             BackTrackTriggered?.Invoke(delay);
         }
+    }
+
+    public static void TriggerEvent() {
+        Debug.Log("This was called");
+        BackTrackTriggered?.Invoke(2f);
     }
 
 

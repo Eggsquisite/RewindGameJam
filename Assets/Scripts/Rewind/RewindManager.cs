@@ -22,6 +22,10 @@ public class RewindManager : MonoBehaviour {
     public void Start() {
         rewindFX = GameObject.Find("Rewind Effect").GetComponent<AudioSource>();
         rewindAbilityDisabled = disablePlayerRewind;
+        if (EndTrigger.backtrackBegin) {
+            rewindAbilityDisabled = true;
+            EnableRewind();
+        }
     }
 
     //TODO:  Make smoothing function
@@ -41,7 +45,7 @@ public class RewindManager : MonoBehaviour {
         rewindEvent?.Invoke(true);
         isRewinding = true;
         trigger = true;
-        rewindFX.Play();
+        if (!rewindAbilityDisabled) rewindFX.Play();
     }
 
     public static void DisableRewind() {

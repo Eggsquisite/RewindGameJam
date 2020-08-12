@@ -11,8 +11,10 @@ public class BacktrackManager : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         GameObject[] objs = GameObject.FindGameObjectsWithTag("BacktrackObject");
+        Debug.Log("In the Backtrack Manager, we found EndTrigger.backtrackBegin to be: " + EndTrigger.backtrackBegin);
+
         for (int i = 0; i < objs.Length; i++) {
-            objs[i].SetActive(false);
+            if (!EndTrigger.backtrackBegin) objs[i].SetActive(false);
             backtrackGOs.Add(objs[i]);
             Debug.Log("Added " + objs[i].name + " to the Backtrack Manager");
         }
@@ -22,6 +24,7 @@ public class BacktrackManager : MonoBehaviour {
     }
 
     void OnBacktrackTriggered(float delay) {
+        Debug.Log("Enabling backtrack objects");
         for (int i = 0; i < backtrackGOs.Count; i++) {
             backtrackGOs[i].SetActive(true);
         }

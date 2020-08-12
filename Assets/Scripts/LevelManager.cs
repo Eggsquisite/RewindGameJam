@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelManager : MonoBehaviour
-{
+public class LevelManager : MonoBehaviour {
+
+    public static bool levelRestarted = false;
     private void OnEnable()
     {
         Player.restartLevel += RestartLevel;
@@ -19,12 +20,14 @@ public class LevelManager : MonoBehaviour
 
     private void ResetVariables(bool newLevel)
     {
-        if (newLevel)
+        if (newLevel) {
             Player.checkpointReached = false;
+            EndTrigger.backtrackBegin = false;
+        }
 
         Torch.firstTorch = true;
         EscapeMenu.isPaused = false;
-        EndTrigger.backtrackBegin = false;
+        
     }
 
     public void LoadNextLevel(GameObject g)
@@ -45,12 +48,17 @@ public class LevelManager : MonoBehaviour
     public void RestartLevel()
     {
         ResetVariables(false);
-        StartCoroutine(AsyncRestartLevel());
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Debug.Log("WE got here!");
+        //StartCoroutine(AsyncRestartLevel());
+        //AsyncRestartLevel();
+        //EndTrigger.TriggerEvent();
     }
 
     IEnumerator AsyncRestartLevel()
     {
         AsyncOperation restartLevel = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+        if (EndTrigger.backtrackBegin) EndTrigger.TriggerEvent();
         while (!restartLevel.isDone)
         {
             yield return null;

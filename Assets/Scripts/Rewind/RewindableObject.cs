@@ -12,8 +12,8 @@ public class RewindableObject {
         this.transform = transform;
         this.savePosition = savePosition;
         this.saveRotation = saveRotation;
-        if (savePosition) rp = new RecordedPositions();
-        if (saveRotation) rr = new RecordedRotations();
+        if (savePosition) rp = new RecordedPositions(transform.position);
+        if (saveRotation) rr = new RecordedRotations(transform.rotation);
     }
 
     public void Add() {
@@ -34,20 +34,25 @@ public class RecordedPositions {
     private List<Vector3> recordedPosition = new List<Vector3>(1000);
     private int pos = 0;
 
+    public RecordedPositions(Vector3 firstPos) { Add(firstPos); }
+
     public void Add(Vector3 position) {
         if (pos == recordedPosition.Count) { recordedPosition.Add(position); pos++; }
         else recordedPosition.Insert(pos++, position);
     }
     
     public Vector3 RewindBy(int amount) {
-        if ((pos - 1 - amount) >= 0) pos -= (amount+1);
-        return recordedPosition[pos];
+        if ((pos - 1 - amount) >= 0) pos -= amount;
+        //Debug.Log("Pos: " + pos);
+        return recordedPosition[pos-1];
     }
 }
 
 public class RecordedRotations {
     private List<Quaternion> recordedRotation = new List<Quaternion>(1000);
     private int pos = 0;
+    
+    public RecordedRotations(Quaternion firstRot) { Add(firstRot); }
     
     public void Add(Quaternion rotation) {
         if (pos == recordedRotation.Count) { recordedRotation.Add(rotation); pos++; }
@@ -56,8 +61,8 @@ public class RecordedRotations {
     
     public Quaternion RewindBy(int amount) {
         //Debug.Log(pos + "   " + amount);
-        if ((pos - 1 - amount) >= 0) pos -= (amount+1);
+        if ((pos - 1 - amount) >= 0) pos -= amount;
         //Debug.Log(pos);
-        return recordedRotation[pos];
+        return recordedRotation[pos-1];
     }
 }

@@ -48,14 +48,14 @@ public class RewindUI : MonoBehaviour {
                 if (timer >= timeON) {
                     timer = 0f;
                     uiText.color = colorOFF;
-                    Debug.Log("Setting transparency to 0");
+                    //Debug.Log("Setting transparency to 0");
                 }
             }
             else {
                 if (timer >= timeOFF) {
                     timer = 0f;
                     uiText.color = colorON;
-                    Debug.Log("Setting transparency to 1");
+                    //Debug.Log("Setting transparency to 1");
                 }
             }
         }
